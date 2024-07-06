@@ -18,106 +18,92 @@ The two main ways to access properties in JavaScript are with a dot and with squ
 
 Properties that contain functions are generally called **methods** of the value they belong to...
 
-> Un ejemplo es `toUpperCase` (método de string).
-
 ## Objects
 
 Reading a property that does not exist will give `undefined`.
 
-It is possible to assign a value to a property expression with the `=` . This will replace the property's value if it already existed or create a new property on the object if it didn’t.
+It is possible to assign a value to a property expression with the `=` . This will replace the property's value if it already existed or create a new property on the object if it did not.
 
-...`delete` ...It is a unary operator that, when applied to an object property, will remove the named property from the object.
+...`delete`...It is a unary operator that, when applied to an object property, will remove the named property from the object.
 
-...`binary` in operator, when applied to a string and an object, tells you whether that object has a property with that name.
+...binary `in` operator, when applied to a string and an object, tells you whether that object has a property with that name...
 
 To find out what properties an object has, you can use the `Object.keys`. Give the function an object and it will return an array of strings (the object's property names).
 
-`Object.assign` that copies all properties from one object into another:
+...`Object.assign` that copies all properties from one object into another:
 
-Los arrays son, entonces, solo un tipo de objeto especializado para almacenar secuencias de cosas. Si evalúas `typeof([])`, este produce `object`.
+Arrays, then, are just a kind of object specialized for storing sequences of things. If you evaluate `typeof []`, it produces `"object"`...
 
 ## Mutability
 
-Vimos que los valores de objeto pueden ser modificados. Los tipos de valores discutidos en capítulos anteriores, como números, strings y booleanos, son todos **inmutables**, es imposible cambiar los valores de aquellos tipos. Puedes combinarlos y obtener nuevos valores a partir de ellos, pero cuando tomas un valor de string específico, ese valor siempre será el mismo. El texto dentro de él no puede ser cambiado. Si tienes un string que contiene `"gato"`, no es posible que otro código cambie un carácter en tu string para que deletree "rato".
+...numbers, strings, and Booleans, are all immutable (it is impossible to change values of those types). You can combine them and derive new values from them, but when you take a specific string value, that value will always remain the same...
 
-## El diario del licántropo
+When you compare objects with `==`, it compares by identity: it will produce true only if both objects are precisely the same value...
 
-```JS
-let diario = []
+## The lycanthrope's log
 
-function añadirEntrada(eventos, ardilla) {
-    diario.push({ eventos, ardilla })
-}
-```
+...Correlation between variables is usually expressed as a value that ranges from $-1$ to $1$. Zero correlation means the variables are not related. A correlation of $1$ indicates that the two are perfectly related (if you know one, you also know the other). Negative $1$ also means that the variables are perfectly related but are opposites (when one is true, the other is false).
 
-Ten en cuenta que el objeto agregado al diario se ve un poco extraño. En lugar de declarar propiedades como `eventos: eventos`, simplemente da un nombre de propiedad. Este es un atajo que representa lo mismo si el nombre de propiedad en la notación de llaves no es seguido por un valor, el valor se toma de la vinculación con el mismo nombre.
-
----
-
-La **correlación** es una medida de dependencia entre variables estadísticas. Una variable estadística no es lo mismo que una variable de programación. En las estadísticas, normalmente tienes un conjunto de **medidas**, y cada variable se mide para cada medida. La correlación entre variables generalmente se expresa como un valor que varía de $-1$ a $1$. Una correlación de cero significa que las variables no están relacionadas. Una correlación de uno índica que las dos están perfectamente relacionadas -si conoces una, también conoces la otra. Uno negativo también significa que las variables están perfectamente relacionadas, pero que son opuestas- cuando una es verdadera, la otra es falsa.
-
-Para calcular la medida de correlación entre dos variables booleanas, podemos usar el **coeficiente phi** ($\phi$). Esta es una fórmula cuya entrada es una tabla de frecuencias que contiene la cantidad de veces que las diferentes combinaciones de las variables fueron observadas. El resultado de la fórmula es un número entre $-1$ y $1$ que describe la correlación.
+To compute the measure of correlation between two Boolean variables, we can use the **phi coefficient** ($\phi$). This is a formula whose input is a frequency table containing the number of times the different combinations of the variables were observed. The output of the formula is a number between $-1$ and $1$ that describes the correlation.
 
 $$
 \phi = \frac{ n_{ 11 } n_{ 00 } - n_{ 10 } n_{ 01 } }{ \sqrt{ n_{ 1\cdot } n_{ 0\cdot } n_{ \cdot 1 } n_{ \cdot 0 } } }
 $$
 
-## Ciclos de array
+## Strings and their properties
 
-```JS
-for (let entrada of DIARIO)
-    console.log(`${entrada.eventos.length} eventos.`)
-```
+Values of type string, number, and Boolean are not objects, and though the language does not complain if you try to set new properties on them, it does not actually store those properties...
 
-Cuando un ciclo `for` se vea de esta manera, con la palabra "of" ("de") después de una definición de variable, recorrerá los elementos del valor dado después `of`. Esto funciona no solo para arrays, sino también para strings y algunas otras estructuras de datos.
+## Rest parameters
 
-## Parámetros restantes
+It can be useful for a function to accept any number of arguments...To write such a function, you put three dots before the function's last parameter...
 
-```JS
-function maximo(...numeros) {
-    let resultado = -Infinity
+When such a function is called, the **rest parameter** is bound to an array containing all further arguments. If there are other parameters before it, their values are not part of that array...
 
-    for (let numero of numeros)
-        if (numero > resultado)
-            resultado = numero
+You can use a similar three-dot notation to call a function with an array of arguments.
 
-    return resultado
-}
+Square bracket array notation similarly allows the triple-dot operator to spread another array into the new array.
 
-console.log(maximo(4, 1, 9, -2)) // 9
-```
+This works even in curly brace objects, where it adds all properties from another object. If a property is added multiple times, the last value to be added wins.
 
----
+## The Math object
 
-```JS
-let palabras = ["nunca", "entenderas"]
+`Math` is used as a container to group a bunch of related functionality. There is only one "Math" object, and it is almost never useful as a value. Rather, it provides a **namespace** so that all these functions and values do not have to be global bindings.
 
-console.log(["tu", ...palabras, "completamente"]) // ["tu", "nunca", "entenderas", "completamente"]
-```
+Though computers are deterministic machines (they always react the same way if given the same input) it is possible to have them produce numbers that appear random. To do that, the machine keeps some hidden value, and whenever you ask for a new random number, it performs complicated computations on this hidden value to create a new value...
 
-## Objeto `Math`
+## Destructuring
 
-Es usado como un contenedor que agrupa un grupo de funcionalidades relacionadas. Solo hay un objeto `Math`, y casi nunca es útil como un valor. Más bien, proporciona un **espacio de nombre** para que todas estas funciones y valores no tengan que ser vinculaciones globales.
+If you know that the value you are binding is an array, you can use square brackets to "look inside" of the value, binding its contents.
 
-Tener demasiadas vinculaciones globales "contamina" el espacio de nombres. Cuanto más nombres hayan sido tomados, es más probable que accidentalmente sobrescribas el valor de algunas vinculaciones existentes. Por ejemplo, no es poco probable que quieras nombrar algo "max" en alguno de tus programas. Dado que la función `max` ya incorporada en JavaScript está escondida dentro del Objeto `Math`, no tenemos que preocuparnos por sobrescribirla.
+A similar trick works for objects, using braces instead of square brackets.
 
----
+## Optional property access
 
-Aunque las computadoras son máquinas deterministas -siempre reaccionan de la misma manera dada la misma entrada- es posible hacer que produzcan números que parecen aleatorios. Para hacer eso, la máquina mantiene algún valor escondido, y cada vez que le pidas un nuevo número aleatorio, realiza cálculos complicados en este valor oculto para crear un nuevo valor. Esta almacena un nuevo valor y retorna un número derivado de él. De esta manera, puede producir números nuevos y difíciles de predecir de una manera que **parece** aleatoria.
+When you are not sure whether a given value produces an object, but still want to read a property from it when it does, you can use a variant of the dot notation: `object?.property`.
+
+The expression `a?.b` means the same as `a.b` when `a` is not `null` or `undefined`. When it is, it evaluates to `undefined`...
 
 ## JSON
 
-JavaScript nos da las funciones `JSON.stringify` y `JSON.parse` para convertir datos hacia y desde este formato. El primero toma un valor en JavaScript y retorna un string codificado en JSON. La segunda toma un string como ese y lo convierte al valor que este codifica.
+A popular serialization format is called **JSON** (pronounced "Jason"), which stands for JavaScript Object Notation. It is widely used as a data storage and communication format on the web, even with languages other than JavaScript.
+
+JSON looks similar to JavaScript'ss way of writing arrays and objects, with a few restrictions. All property names have to be surrounded by double quotes, and only simple data expressions are allowed (no function calls, bindings, or anything that involves actual computation). Comments are not allowed in JSON.
+
+JavaScript gives us the functions `JSON.stringify` and `JSON.parse` to convert data to and from this format. The first takes a JavaScript value and returns a JSON-encoded string. The second takes such a string and converts it to the value it encodes.
 
 ```JS
 let string = JSON.stringify(
-    { ardilla: false, eventos: ["fin de semana"] }
-)
+        {
+            squirrel: false,
+            events: ["weekend"]
+        }
+    )
 
-console.log(string) // { "ardilla": false, "eventos": ["fin de semana"] }
-console.log(JSON.parse(string).eventos) // ["fin de semana"]
+console.log(string) // {"squirrel":false,"events":["weekend"]}
+console.log(JSON.parse(string).events); // ["weekend"]
 ```
 
-## Resumen
+## Summary
 
-Los objetos y arrays (que son un tipo específico de objeto) proporcionan formas de agrupar varios valores en un solo valor. Conceptualmente, esto nos permite poner un montón de cosas relacionadas en un bolso y correr alrededor con el bolso, en lugar de envolver nuestros brazos alrededor de todas las cosas individuales, tratando de aferrarnos a ellas por separado.
+Objects and arrays provide ways to group several values into a single value. This allows us to put a bunch of related things in a bag and run around with the bag instead of wrapping our arms around all of the individual things and trying to hold on to them separately.

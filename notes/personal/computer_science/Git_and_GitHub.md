@@ -16,27 +16,35 @@
 
 ## Stash changes
 
-- `git stash`.
+```BASH
+git stash
+```
 
-    > Optional, you can add a message adding `save <message>`.
+> Optional, you can add a message adding `save <message>`.
 
 ## Unstash changes
 
 1. The stashed will be removed after you apply them to the code you are working on.
 
-    - `git stash pop`.
+    ```BASH
+    git stash pop
+    ```
 
 2. The stashed will not be removed after you apply them to the code you are working on.
 
-    - `git stash apply`.
+    ```BASH
+    git stash apply
+    ```
 
 ## Delete files from the staging area without deleting them from the workspace
 
-- `git rm --cached <file>`.
+```BASH
+git rm --cached <file>
+```
 
-    > To discard all, use the wildcard `*`.
+> To discard all, use the wildcard `*`.
 
-    > Without the `--cached` would also remove the file from the workspace.
+> Without the `--cached` would also remove the file from the workspace.
 
 ## Delete commits history
 
@@ -50,9 +58,11 @@
 
 5. `git push -f origin main`.
 
-## Deactivate automatic end-of-line conversion 
+## Deactivate automatic end-of-line conversion
 
-- `git config --global core.autocrlf false`
+```BASH
+git config --global core.autocrlf false`
+```
 
 ## Pull a remote repository by overwriting the local one
 
@@ -62,7 +72,9 @@
 
 ## Replace a remote branch with a local one
 
-1. `git push -f origin <branch name>`.
+```BASH
+git push -f origin <branch name>
+```
 
 ## Add files to the last commit
 
@@ -81,3 +93,9 @@
 - `git checkout -- <file>`: for a specific added file.
 
 - `git checkout -- .`: for all added files.
+
+## Remove directories and files from tracking
+
+```BASH
+git rm -r --cached <file or directory>
+```

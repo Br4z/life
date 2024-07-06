@@ -1,12 +1,10 @@
 # Project: A Robot
 
-> "[...] la pregunta de si las Máquinas Pueden Pensar [...] es tan relevante como la pregunta de si los Submarinos Pueden Nadar." - Edsger Dijkstra, The Threats to Computing Science.
+> "The question of whether Machines Can Think \[...\] is about as relevant as the question of whether Submarines Can Swim." - Edsger Dijkstra, The Threats to Computing Science.
 
 ---
 
-## Introducción
-
-La teoría es necesaria para aprender a programar, pero leer y entender programas reales es igual de importante.
+...Theory is necessary to learn to program, but reading and understanding actual programs is just as important.
 
 ## La tarea
 

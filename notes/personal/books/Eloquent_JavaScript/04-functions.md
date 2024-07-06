@@ -8,17 +8,17 @@
 
 ## Bindings and scopes
 
-In pre-$2015$ JavaScript, only functions created new scopes, so old-style bindings, created with the var keyword, are visible throughout the whole function in which they appear—or throughout the global scope, if they are not in a function.
+...In pre-$2015$ JavaScript, only functions created new scopes, so old-style bindings, created with `var`, are visible throughout the whole function in which they appear (or throughout the global scope, if they are not in a function).
 
 ```JS
 let x = 10;   // global
 if (true) {
-  let y = 20; // local to block
-  var z = 30; // also global
+    let y = 20; // local to block
+    var z = 30; // also global
 }
 ```
 
-Each scope can "look out" into the scope around it, so `x` is visible inside the block in the example. The exception is when multiple bindings have the same name—in that case, code can see only the **innermost** one.
+Each scope can "look out" into the scope around it, so `x` is visible inside the block in the example. The exception is when multiple bindings have the same name (in that case, code can see only the **innermost** one)...
 
 ## Declaration notation
 
@@ -48,11 +48,11 @@ The place where the computer stores this context is the **call stack**. Every ti
 
 JavaScript is extremely broad-minded about the number of arguments you can pass to a function. If you pass too many, the extra ones are ignored. If you pass too few, the missing parameters are assigned `undefined`.
 
-If you write an `=` after a parameter, followed by an expression, the value of that expression will replace the argument when it is not given.
+If you write an `=` after a parameter, followed by an expression, the value of that expression will replace the argument when it is not given...
 
 ## Closure
 
-This feature (being able to reference a specific instance of a local binding in an enclosing scope) is called **closure**. A function that references bindings from local scopes around it is called a **closure**.
+This feature (being able to reference a specific instance of a local binding in an enclosing scope) is called **closure**. A function that references bindings from local scopes around it is called a **closure**...
 
 ## Recursion
 
@@ -68,4 +68,4 @@ A useful principle is to refrain from adding cleverness unless you are absolutel
 
 Functions can be roughly divided into those that are called for their side effects and those that are called for their return value (though it is also possible to both have side effects and return a value).
 
-A pure function is a specific kind of value-producing function that not only has no side effects, but also does not rely on side effects from other code...A pure function has the pleasant property that, when called with the same arguments, it always produces the same value (and doesn’t do anything else)...
+A **pure** function is a specific kind of value-producing function that not only has no side effects, but also does not rely on side effects from other code...A pure function has the pleasant property that, when called with the same arguments, it always produces the same value (and does not do anything else)...

@@ -3,31 +3,8 @@
 ## Programas
 
 - [VisiPics](http://www.visipics.info/index.php?title=Download): Para eliminar imágenes duplicadas (o parecidas).
+
 - [Windows Update Blocker](https://www.sordum.org/9470/windows-update-blocker-v1-7/)
-
-## ICM profile
-
-Luego de conseguir el ICM hacemos lo siguiente:
-
-1. Nombrar el perfil descargado con un nombre significativo (puedo sugerir un formato `Monitor brand - Monitor model`).
-
-2. Instalar el perfil descargado (clic derecho e instalar).
-
-3. Ir a "Administración de color".
-
-4. En dispositivo seleccionar tu monitor y activar la casilla de "Usar mi configuración para este dispositivo".
-
-    1. Da clic en agregar y selecciona el perfil instalado.
-
-    2. Cuando aparezca en la lista, selecciónalo y haz clic en usar como perfil predeterminado.
-
-        1. Vete al apartado de opciones avanzadas y activa la calibración de Windows.
-
-            > En el apartado de "Cambiar los valores predeterminados del sistema..." se te desplegará un menú idéntico, en el que ya podrás marcar la casilla.
-
-5. Cierra el menú y los cambios ya estarán aplicados.
-
-> Si quieres estar seguro en el apartado Sistema >> Pantalla en configuración encontrarás el perfil de color que actualmente usas.
 
 ## Tools
 
@@ -77,42 +54,6 @@ Luego de conseguir el ICM hacemos lo siguiente:
 
 `export DISPLAY=127.0.0.1:0`
 
-## Recording with FFmpeg
-
-- List devices: `ffmpeg -list_devices true -f dshow -i dummy`.
-
-- Desktop.
-
-    - Recording: `ffmpeg -f gdigrab -framerate 30 -i desktop -f dshow -i audio="<mic name>" -c:v <codec name>  -qp 0 <output file name with extension>`.
-
-        - AMD.
-
-            - Available codecs.
-
-                - "h264_amf".
-
-                - "hevc_amf".
-
-        - Nvidia.
-
-            - Available codecs.
-
-                - "h264_nvenc".
-
-                - "nvenc_hevc.
-
-    For a basic recording, just omit the `-c` and `-qp` flag (`ffmpeg -f gdigrab -framerate 30 -i desktop -f dshow -i audio="<mic name>" output_test.mp4`).
-
-    > For more information, see the [documentation](https://trac.ffmpeg.org/wiki/Capture/Desktop#Windows).
-
-- Webcam.
-
-    - List device options: `ffmpeg -list_options true -f dshow -i video=<webcam camera>`.
-
-    - Recording: `ffmpeg -f dshow -video_size <resolution> -framerate <framerate> -i video="<webcam camera>":audio="<webcam mic" <output file name with extension>`.
-
-    > For more information, see the [documentation](https://trac.ffmpeg.org/wiki/Capture/Webcam#Windows).
-
 ## Web petitions with `curl`
 
 - `curl -X POST -H "Content-Type: application/json" -d @petition.json https://api.example.com/upload`
@@ -133,12 +74,6 @@ Luego de conseguir el ICM hacemos lo siguiente:
 
 ---
 
-```BASH
-for file in *.md; do
-    mv -- "$file" "${file%.txt}_pending.md"
-done
-```
-
 ## Folders to check
 
 - `D:\education`.
@@ -152,3 +87,92 @@ done
 - `D:\music`.
 
 - `D:\VFX_resources`.
+
+## Summer meetings message
+
+Hi, this message is to remaind the suggestion I made about reading the following material in your vacation:
+
+- [Eloquent JavaScript](https://eloquentjavascript.net).
+
+- [The Linux Command Line](https://www.linuxcommand.org/tlcl.php).
+
+I have these books pending, so I plan to review them in short meetings with my students (you are one of them), I would like to ask you if you will have availability for it. If the answer is "yes", would you agree to my adding you to a WhatApp group to plan the meetings?
+
+> If you are not available for the meeting, I recommend that you consult these resources. They will be very useful to you in the future (at least they have been to me).
+
+## Summer meetings
+
+### Eloquent JavaScript topics
+
+In total there are 21 chapters of the book (22 including the introduction), considering that our vacation ends on August 12, we have 6 (starting from this week) weeks to read the book, that means we should read 4 chapters per week.
+
+#### Part 1: Language
+
+01. Values, types, and operators.
+02. Program structure.
+03. Functions.
+04. Data structures: objects and arrays.
+05. Higher-order functions:
+06. The secret life of objects.
+07. Project: A Robot.
+08. Bugs and errors.
+09. Regular expressions.
+10. Modules.
+11. Asynchronous programming.
+12. Project: A Programming Language.
+
+#### Part 2: Browser
+
+1. JavaScript and the browser.
+2. The Document Object Model (DOM).
+3. Handling events.
+4. Project: A Platform Game.
+5. Drawing on canvas.
+6. HTTP and forms
+7. Project: A Pixel Art Editor
+
+#### Node.js (Node)
+
+1. Node.js.
+2. Project: Skill-Sharing Website.
+
+The chapters __underline__ chapters are pending and the chapters in ~~strike-through~~ are those that have been read.
+
+## The Linux Command Line
+
+1. What is the Shell?
+2. Navigation.
+3. Exploring the system.
+4. Manipulating files and directories.
+5. Working with commands.
+6. Redirection.
+7. Seeing the world as the Shell sees it.
+8. Advanced keyboard tricks.
+9. Permissions.
+10. Processes.
+11. The environment.
+12. A gentle introduction to vi.
+13. Customizing the prompt.
+14. Package management.
+15. Storage media.
+16. Networking.
+17. Searching for files.
+18. Archiving and backup.
+19. Regular expressions.
+20. Text processing.
+21. Formatting output.
+22. Printing.
+23. Compiling programs.
+24. Writing your first script.
+25. Starting a project.
+26. Top-Down design.
+27. Flow Control: Branching with if.
+28. Reading Keyboard Input.
+29. Flow Control: Looping with while / until.
+30. Troubleshooting.
+31. Flow Control: Branching with case.
+32. Positional Parameters.
+33. Flow Control: Looping with for.
+34. Strings and Numbers.
+35. Arrays.
+36. Exotica.

@@ -1,122 +1,79 @@
 # Higher-order functions
 
-> "Tzu-li y Tzu-ssu estaban jactándose del tamaño de sus últimos programas. "Doscientas mil líneas", dijo Tzu-li, "¡sin contar los comentarios!" Tzu-ssu respondió, "Pssh, el mío tiene casi un **millón** de líneas ya." El Maestro Yuan-Ma dijo, "Mi mejor programa tiene quinientas líneas." Al escuchar esto, Tzu-li y Tzu-ssu fueron iluminados." - Master Yuan-Ma, The Book of Programming.
-
-> "Hay dos formas de construir un diseño de software: una forma es hacerlo tan simple de manera que no haya deficiencias obvias, y la otra es hacerlo tan complicado de manera que obviamente no haya deficiencias." - C.A.R. Hoare, 1980 ACM Turing Award Lecture.
+> "There are two ways of constructing a software design: One way is to make it so simple that there are obviously no deficiencies, and the other way is to make it so complicated that there are no obvious deficiencies." - C.A.R. Hoare, 1980 ACM Turing Award Lecture.
 
 ---
 
-## Introducción
+A large program is a costly program, and not just because of the time it takes to build. Size almost always involves complexity, and complexity confuses programmers. Confused programmers, in turn, introduce mistakes (**bugs**) into programs. A large program then provides a lot of space for these bugs to hide, making them hard to find.
 
-Un programa grande es un programa costoso, y no solo por el tiempo que se necesita para construirlo. El tamaño casi siempre involucra complejidad, y la complejidad confunde a los programadores. A su vez, los programadores confundidos, introducen errores en los programas. Un programa grande entonces proporciona de mucho espacio para que estos bugs se oculten, haciéndolos difíciles de encontrar.
+## Abstraction
 
-## Abstracción
+...Abstractions give us the ability to talk about problems at a higher (or more abstract) level, without getting sidetracked by uninteresting details.
 
-En el contexto de la programación, estos tipos de vocabularios (simples) suelen ser llamados **abstracciones**. Las abstracciones esconden detalles y nos dan la capacidad de hablar acerca de los problemas a un nivel superior (o más abstracto).
+It is a useful skill, in programming, to notice when you are working at too low a level of abstraction.
 
-En la programación, es una habilidad útil, darse cuenta cuando estás trabajando en un nivel de abstracción demasiado bajo.
+## Higher-order functions (section)
 
-## Funciones de orden superior
+Functions that operate on other functions, either by taking them as arguments or by returning them, are called **higher-order functions**...The term comes from mathematics, where the distinction between functions and other values is taken more seriously.
 
-Operan en otras funciones, ya sea tomándolas como argumentos o retornándolas. Como ya hemos visto que las funciones son valores regulares, no existe nada particularmente notable sobre el hecho de que tales funciones existen. El término proviene de las matemáticas, donde la distinción entre funciones y otros valores se toma más en serio.
-
----
-
-Hay un método de array incorporado, `forEach` que proporciona algo como un ciclo "for/of" como una función de orden superior.
+There is a built-in array method, `forEach`, that provides something like a for/of loop as a higher-order function:
 
 ```JS
-["A", "B"].forEach(letra => console.log(letra))
+["A", "B"].forEach(l => console.log(l))
 // A
 // B
 ```
 
-## Filtrando arrays
+## Filtering arrays
 
 ```JS
-function filtrar(array, prueba) {
-    let pasaron = []
+function filter(array, test) {
+    let passed = []
 
-    for (let elemento of array)
-        if (prueba(elemento))
-            pasaron.push(elemento)
+    for (let element of array)
+        if (test(element))
+            passed.push(element)
 
-    return pasaron
+    return passed
 }
 ```
 
-Observa cómo la función `filtrar`, en lugar de eliminar elementos del array existente, crea un nuevo array solo con los elementos que pasan la prueba. Esta función es **pura**. No modifica el array que se le es dado.
+Note how `filter`, rather than deleting elements from the existing array, builds up a new array with only the elements that pass the test. This function is **pure**. It does not modify the array it is given.
 
-## Transformando con `map`
+## Transforming with map
 
-El método `map` ("mapear") transforma un array al aplicar una función a todos sus elementos y construir un nuevo array a partir de los valores retornados. El nuevo array tendrá la misma longitud que el array de entrada, pero su contenido ha sido **mapeado** a una nueva forma con base en la función.
-
-Al igual que `forEach` y `filter`, `map` es un método de array estándar.
-
-## Resumiendo con reduce
+The `map` transforms an array by applying a function to all of its elements and building a new array from the returned values. The new array will have the same length as the input array, but its content will have been **mapped** to a new form by the provided function.
 
 ```JS
-function reduce(array, combinar, inicio) {
-    let actual = inicio
+function map(array, transform) {
+    let mapped = []
 
-    for (let elemento of array)
-        actual = combinar(actual, elemento)
+    for (let element of array)
+        mapped.push(transform(element))
 
-    return actual
+    return mapped
 }
-
-console.log(reduce([1, 2, 3, 4], (a, b) => a + b, 0)) // 10
 ```
 
-**reduce** construye un valor al repetidamente tomar un solo elemento del array y combinándolo con el valor actual. Al sumar números, comenzarías con el número cero y, para cada elemento, agregas eso a la suma.
-
----
-
-El método de array estándar `reduce`, que por supuesto corresponde a esta función, tiene una mayor comodidad. Si tu array contiene al menos un elemento, tienes permitido omitir el argumento "inicio". El método tomará el primer elemento del array como su valor de inicio y comienza a reducir a partir del segundo elemento.
-
-## Composibilidad
-
-Las funciones de orden superior comienzan a brillar cuando necesitas **componer** operaciones. Como ejemplo, vamos a escribir código que encuentre el año de origen promedio para los códigos vivos y muertos en el conjunto de datos.
+## Summarizing with reduce
 
 ```JS
-function promedio(array) {
-    return array.reduce((a, b) => a + b) / array.length
+function reduce(array, combine, start) {
+    let current = start
+
+    for (let element of array)
+        current = combine(current, element)
+
+    return current;
 }
-
-console.log(
-    Math.round(
-        promedio(
-            SCRIPTS.filter(codigo => codigo.living).map(codigo => codigo.year)
-        )
-    )
-) // 1185
-
-console.log(
-    Math.round(
-        promedio(
-            SCRIPTS.filter(codigo => !codigo.living).map(codigo => codigo.year)
-        )
-    )
-) // 209
 ```
 
-```JS
-let total = 0, cuenta = 0
+`reduce`, which of course corresponds to this function, has an added convenience. If your array contains at least one element, you are allowed to leave off the start argument. The method will take the first element of the array as its start value and start reducing at the second element.
 
-for (let codigo of SCRIPTS)
-    if (codigo.living) {
-        total += codigo.year
-        cuenta += 1
-    }
+## Strings and character codes
 
-console.log(Math.round(total / cuenta)) // 1185
-```
+...JavaScript strings are encoded as a sequence of $16$-bit numbers. These are called **code units**. A Unicode character code was initially supposed to fit within such a unit (which gives you a little over $65,000$ characters). When it became clear that was not going to be enough, many people balked at the need to use more memory per character. To address these concerns, UTF-$16$, the format also used by JavaScript strings, was invented. It describes most common characters using a single $16$-bit code unit but uses a pair of two such units for others.
 
-En términos de lo que la computadora realmente está haciendo, estos dos enfoques son bastante diferentes. El primero creará nuevos arrays al ejecutar `filter` y `map`, mientras que el segundo solo computa algunos números, haciendo menos trabajo. Por lo general, puedes permitirte el enfoque legible, pero si estás procesando arrays enormes, y haciéndolo muchas veces, el estilo menos abstracto podría ser mejor debido a la velocidad extra.
+## Summary
 
-## Strings y códigos de caracteres
-
-Los strings de JavaScript están codificados como una secuencia de números de 16 bits. Estos se llaman **unidades de código**. Inicialmente, se suponía que un código de carácter Unicode encajara dentro de esa unidad (lo que da un poco más de 65,000 caracteres). Cuando quedó claro que esto no sería suficiente, muchas las personas se resistieron a la necesidad de usar más memoria por carácter. Para apaciguar estas preocupaciones, UTF-16, el formato utilizado por los strings de JavaScript, fue inventado. Este describe la mayoría de los caracteres más comunes usando una sola unidad de código de 16 bits, pero usa un par de dos de esas unidades para otros caracteres.
-
-## Resumen
-
-Ser capaz de pasar valores de función a otras funciones es un aspecto profundamente útil de JavaScript. Nos permite escribir funciones que modelen cálculos con "brechas" en ellas. El código que llama a estas funciones pueden llenar estas brechas al proporcionar valores de función.
+Being able to pass function values to other functions is a deeply useful aspect of JavaScript. It allows us to write functions that model computations with "gaps" in them. The code that calls these functions can fill in the gaps by providing function values.
