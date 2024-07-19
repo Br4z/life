@@ -1,14 +1,8 @@
-# Módulos
+# Modules
 
-> "Escriba código que sea fácil de borrar, no fácil de extender." - Tef, Programming is Terrible.
+> "Write code that is easy to delete, not easy to extend." - Tef, Programming is Terrible.
 
----
-
-## Introducción
-
-El programa ideal tiene una estructura cristalina. La forma en que funciona es fácil de explicar, y cada parte juega un papel bien definido. Estas hacen parte del módulo disponible para el mundo exterior y mantienen el resto privado. Al restringir las formas en que los módulos interactúan entre sí, el sistema se parece más a un juego de LEGOS, donde las piezas interactúan a través de conectores bien definidos, y menos como barro, donde todo se mezcla con todo.
-
-## Módulos
+## Modular programs
 
 Son un intento de evitar estos problemas. Un módulo es una pieza del programa que especifica en qué otras piezas este depende (sus **dependencias**) y qué funcionalidad proporciona para que otros módulos usen (su **interfaz**).
 

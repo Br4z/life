@@ -12,10 +12,6 @@
 
 - Regex for lines ending witouth a finald dot: `^[^.]*[^.]$`.
 
-- Regex for two or more spaces between words: ` {2,}`.
-
-- Regex por comas without ONLY a blank space: `,[^\s]`.
-
 - Regex for comments without the beginning space: `[^\s]\\\\`
 
 `[^\s-]\(`
@@ -52,14 +48,6 @@
 
 - Edit service config: `sudo systemctl edit plexmediaserver.service`.
 
-`export DISPLAY=127.0.0.1:0`
-
-## Web petitions with `curl`
-
-- `curl -X POST -H "Content-Type: application/json" -d @petition.json https://api.example.com/upload`
-
-    > `-H` is to specify a header.
-
 ## Linux applications that I use
 
 - `neovim`.
@@ -88,55 +76,41 @@
 
 - `D:\VFX_resources`.
 
-## Summer meetings message
+## Notes assets naming style
 
-Hi, this message is to remaind the suggestion I made about reading the following material in your vacation:
+```
+[<type of note>]_<number of note>_<number of image>-<name of the image>
+```
 
-- [Eloquent JavaScript](https://eloquentjavascript.net).
+- Type of note.
 
-- [The Linux Command Line](https://www.linuxcommand.org/tlcl.php).
+    - $1$: a class note.
 
-I have these books pending, so I plan to review them in short meetings with my students (you are one of them), I would like to ask you if you will have availability for it. If the answer is "yes", would you agree to my adding you to a WhatApp group to plan the meetings?
-
-> If you are not available for the meeting, I recommend that you consult these resources. They will be very useful to you in the future (at least they have been to me).
+    - $2$: a workshop note.
 
 ## Summer meetings
 
-### Eloquent JavaScript topics
+### Meeting highlights
 
-In total there are 21 chapters of the book (22 including the introduction), considering that our vacation ends on August 12, we have 6 (starting from this week) weeks to read the book, that means we should read 4 chapters per week.
+### 06/07/2024
 
-#### Part 1: Language
+1. Use Markdown to make your notes.
 
-01. Values, types, and operators.
-02. Program structure.
-03. Functions.
-04. Data structures: objects and arrays.
-05. Higher-order functions:
-06. The secret life of objects.
-07. Project: A Robot.
-08. Bugs and errors.
-09. Regular expressions.
-10. Modules.
-11. Asynchronous programming.
-12. Project: A Programming Language.
+    Read the following articles to learn more about it:
 
-#### Part 2: Browser
+    - [Getting Started](https://www.markdownguide.org/getting-started)
 
-1. JavaScript and the browser.
-2. The Document Object Model (DOM).
-3. Handling events.
-4. Project: A Platform Game.
-5. Drawing on canvas.
-6. HTTP and forms
-7. Project: A Pixel Art Editor
+    - [Basic syntax](https://www.markdownguide.org/basic-syntax)
 
-#### Node.js (Node)
+    > I recommend that you use the Visual Studio Code editor.
 
-1. Node.js.
-2. Project: Skill-Sharing Website.
+2. The book has some exercises at the end of the chapters, so I recommend that you install [Node](https://nodejs.org/en/download/prebuilt-installer) (runtime environment for JavaScript) your computer locally.
 
-The chapters __underline__ chapters are pending and the chapters in ~~strike-through~~ are those that have been read.
+    > Sorry, I forgot to tell the most important part of the meeting.
+
+3. Remember to post your doubts in the text channel of the Book.
+
+4. Next meeting is to review the week's chapters and technical questions about Markdown and Node.
 
 ## The Linux Command Line
 
