@@ -110,7 +110,7 @@ Object property names must be strings. If you need a map whose keys cannot easil
 Fortunately, JavaScript comes with a class called "Map" that is written for this exact purpose. It stores a mapping and allows any type of keys.
 
 ```JS
-let ages = new Map();
+let ages = new Map()
 ages.set("Boris", 39)
 ages.set("Liang", 22)
 ages.set("Júlia", 62)
@@ -136,7 +136,7 @@ console.log(Object.hasOwn({ x: 1 }, "toString")) // false
 ...Symbols are values created with the Symbol function. Unlike strings, newly created symbols are unique...
 
 ```JS
-let symbol = Symbol("name");
+let symbol = Symbol("name")
 console.log(symbol == Symbol("name")) // false
 ```
 
@@ -160,7 +160,7 @@ let my_trip = {
     0: "Lankwitz",
     1: "Babelsberg",
     [length]: 21500
-};
+}
 console.log(my_trip[length], my_trip.length) // 21500 2
 ```
 

@@ -64,7 +64,7 @@ function reduce(array, combine, start) {
     for (let element of array)
         current = combine(current, element)
 
-    return current;
+    return current
 }
 ```
 

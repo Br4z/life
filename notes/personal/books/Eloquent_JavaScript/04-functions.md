@@ -11,10 +11,10 @@
 ...In pre-$2015$ JavaScript, only functions created new scopes, so old-style bindings, created with `var`, are visible throughout the whole function in which they appear (or throughout the global scope, if they are not in a function).
 
 ```JS
-let x = 10;   // global
+let x = 10 // global
 if (true) {
-    let y = 20; // local to block
-    var z = 30; // also global
+    let y = 20 // local to block
+    var z = 30 // also global
 }
 ```
 

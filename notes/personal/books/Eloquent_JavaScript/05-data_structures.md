@@ -101,7 +101,7 @@ let string = JSON.stringify(
     )
 
 console.log(string) // {"squirrel":false,"events":["weekend"]}
-console.log(JSON.parse(string).events); // ["weekend"]
+console.log(JSON.parse(string).events) // ["weekend"]
 ```
 
 ## Summary

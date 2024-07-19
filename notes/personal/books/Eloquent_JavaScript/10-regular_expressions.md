@@ -1,301 +1,180 @@
 # Regular expressions
 
-> "Algunas personas, cuando confrontadas con un problema, piensan 'Ya sé, usaré expresiones regulares.' Ahora tienen dos problemas." - Jamie Zawinski.
+> "Some people, when confronted with a problem, think 'I know, I will use regular expressions.' Now they have two problems." - Jamie Zawinski.
 
-> "Yuan-Ma dijo: 'Cuando cortas contra el grano de la madera, mucha fuerza se necesita. Cuando programas contra el grano del problema, mucho código se necesita.'" - Master Yuan-Ma, The Book of Programming.
+> "When you cut against the grain of the wood, much strength is needed. When you program against the grain of the problem, much code is needed." - Master Yuan-Ma, The Book of Programming.
 
----
+Regular expressions are both terribly awkward and extremely useful. Their syntax is cryptic and the programming interface JavaScript provides for them is clumsy. But they are a powerful tool for inspecting and processing strings. Properly understanding regular expressions will make you a more effective programmer.
 
-## Introducción
+## Creating a regular expression
 
-Las expresiones regulares son terriblemente incómodas y extremadamente útiles. Su sintaxis es críptica, y la interfaz de programación que JavaScript proporciona para ellas es torpe. Pero son una poderosa herramienta para inspeccionar y procesar cadenas.
-
-## Creando una expresión regular
+A regular expression is a type of object. It can be either constructed with the `RegExp` constructor or written as a literal value by enclosing a pattern in forward slash (`/`) characters.
 
 ```JS
-let re1 = new RegExp("abc")
-let re2 = /abc/
+let re_1 = new RegExp("abc")
+let re_2 = /abc/
 ```
 
-## Probando coincidencias
+## Testing for matches
+
+Regular expression objects have a number of methods. The simplest one is `test`. If you pass it a string, it will return a Boolean telling you whether the string contains a match of the pattern in the expression.
 
 ```JS
 console.log(/abc/.test("abcde")) //  true
 console.log(/abc/.test("abxde")) //  false
 ```
 
-## Conjunto de caracteres
+## Sets of characters
 
-Digamos que queremos encontrar cualquier número. En una expresión regular, poner un conjunto de caracteres entre corchetes hace que esa parte de la expresión coincida con cualquiera de los caracteres entre los corchetes.
+A number of common character groups have their own built-in shortcuts.
+
+|      |                         meaning                          |
+|:----:|:--------------------------------------------------------:|
+| `\d` |                          digit.                          |
+| `\w` |                      alphanumeric.                       |
+| `\s` | whitespace character (space, tab, newline, and similar). |
+| `\D` |                       not a digit.                       |
+| `\W` |                     nonalphanumeric.                     |
+| `\S` |                      nonwhitespace.                      |
+| `.`  |            any character except for newline.             |
+
+To **invert** a set of characters (that is, to express that you want to match any character except the ones in the set) you can write a caret (`^`) character after the opening bracket.
+
+## International characters
+
+...as far as JavaScript's regular expressions are concerned, a "word character" is only one of the $26$ characters in the Latin alphabet (uppercase or lowercase), decimal digits, and, for some reason, the underscore character.
+
+## Matches and groups
+
+`test`  is the absolute simplest way to match a regular expression. It tells you only whether it matched and nothing else. Regular expressions also have an `exec` (execute) that will return `null` if no match was found and return an object with information about the match otherwise.
 
 ```JS
-console.log(/[0123456789]/.test("en 1992")) // true
-console.log(/[0-9]/.test("en 1992")) // true
+let match = /\d+/.exec("one two 100")
+console.log(match) // ["100"]
+console.log(match.index) // 8
 ```
 
-Dentro de los corchetes, un guion (`-`) entre dos caracteres puede ser utilizado para indicar un rango de caracteres, donde el orden es determinado por el número Unicode del carácter. Los caracteres $0$ a $9$ están uno al lado del otro en este orden (códigos $48$ a $57$), por lo que `[0-9]` los cubre a todos y coincide con cualquier dígito.
+When the regular expression contains subexpressions grouped with parentheses, the text that matched those groups will also show up in the array.
 
-Un número de caracteres comunes tienen sus propios atajos incorporados. Los dígitos son uno de ellos: `\d` significa lo mismo que `[0-9]`.
-
-|      |                          Significado                           |
-|:----:|:--------------------------------------------------------------:|
-| `\d` |                             Dígito                             |
-| `\w` |                          Alfanumérico                          |
-| `\s` | Espacio en blanco (espacio, tabulación, nueva línea y similar) |
-| `\D` |                           No dígito                            |
-| `\W` |                        No alfanumérico                         |
-| `\S` |                      No espacio en blanco                      |
-| `.`  |       Cualquier carácter a excepción de una nueva línea        |
+If you want to use parentheses purely for grouping, without having them show up in the array of matches, you can put `?:` after the opening parenthesis.
 
 ```JS
-let dateTime = /\d\d-\d\d-\d\d\d\d \d\d:\d\d/
-
-console.log(dateTime.test("01-30-2003 15:20")) // true
-console.log(dateTime.test("30-jan-2003 15:20")) // false
+console.log(/(?:na)+/.exec("banana")) // ["nana"]
 ```
 
-Para **invertir** un conjunto de caracteres, es decir, para expresar que deseas coincidir con cualquier carácter, **excepto** con los que están en el conjunto, puedes escribir un carácter de intercalación (`^`) después del corchete de apertura.
+## The Date class
 
 ```JS
-let noBinario = /[^01]/
-
-console.log(noBinario.test("1100100010100110")) // false
-console.log(noBinario.test("1100100010200110")) // true
-```
-
-## Repitiendo partes de un patrón
-
-```JS
-console.log(/'\d+'/.test("'123'")) // true
-console.log(/'\d+'/.test("''")) // false
-console.log(/'\d*'/.test("'123'")) // true
-console.log(/'\d*'/.test("''")) // true
-```
-
-> `+` parte del patrón puede repetirse más de una vez, pero tiene que tener al menos una coincidencia.
-
-> `*` permite que el patrón coincida cero veces.
-
-```JS
-let reusar = /reh?usar/ // "?" parte del patron opcional
-
-console.log(reusar.test("rehusar")) // true
-console.log(reusar.test("reusar")) // true
-```
-
-```JS
-let fechaHora = /\d{1,2}-\d{1,2}-\d{4} \d{1,2}:\d{2}/
-
-console.log(fechaHora.test("30-1-2003 8:45")) // true
-```
-
-> `{<start>,<end>}` para especificar rangos (también se pueden dejar abiertos).
-
-## Agrupando sub expresiones
-
-Para usar un operador como `*` o `+` en más de un elemento a la vez, tienes que usar paréntesis. Una parte de una expresión regular encerrada entre paréntesis cuenta como un único elemento en lo que respecta a los operadores que la siguen.
-
-```JS
-let caricaturaLlorando = /boo+(hoo+)+/i
-console.log(caricaturaLlorando.test("Boohoooohoohooo")) // true
-```
-
-> La `i` al final de la expresión hace que esta expresión regular sea insensible a mayúsculas y minúsculas.
-
-## Coincidencias y grupos
-
-El método `test` es la forma más simple de hacer coincidir una expresión. Solo te dice si coincide y nada más. Las expresiones regulares también tienen un método `exec` ("ejecutar") que retorna `null` si no se encontró una coincidencia y retorna un objeto con información sobre la coincidencia de lo contrario.
-
-```JS
-let coincidencia = /\d+/.exec("uno dos 100")
-console.log(coincidencia) // ["100"]
-console.log(coincidencia.index) // 8
-```
-
-Los valores de tipo string tienen un método `match` que se comporta de manera similar.
-
-```JS
-console.log("uno dos 100".match(/\d+/)) //  ["100"]
-```
-
-## La clase `Date` ("Fecha")
-
-```JS
-console.log(new Date()) // Mon Nov 13 2017 16:19:11 GMT+0100 (CET)
+console.log(new Date()) // Fri Feb 02 2024 18:03:06 GMT+0100 (CET)
 console.log(new Date(2009, 11, 9)) // Wed Dec 09 2009 00:00:00 GMT+0100 (CET)
 console.log(new Date(2009, 11, 9, 12, 59, 59, 999)) // Wed Dec 09 2009 12:59:59 GMT+0100 (CET)
 ```
 
-JavaScript usa una convención en donde los números de los meses comienzan en cero (por lo que Diciembre es 11), sin embargo, los números de los días comienzan en uno. Esto es confuso y tonto. Ten cuidado.
+JavaScript uses a convention where month numbers start at zero (so December is $11$), yet day numbers start at one.
 
-Los últimos cuatro argumentos (horas, minutos, segundos y milisegundos) son opcionales y se toman como cero cuando no se dan.
+Timestamps are stored as the number of milliseconds since the start of $1970$, in the UTC time zone. This follows a convention set by "Unix time", which was invented around that time. You can use negative numbers for times before $1970$.
 
-Las marcas de tiempo se almacenan como la cantidad de milisegundos desde el inicio de 1970, en la zona horaria UTC. Esto sigue una convención establecida por el "Tiempo Unix", el cual se inventó en ese momento. Puedes usar números negativos para los tiempos anteriores a 1970. Usar el método `getTime` ("obtenerTiempo") en un objeto fecha retorna este número. Es bastante grande, como te puedes imaginar.
+## Boundaries and look-ahead
 
-## Patrones de elección
+Look-ahead tests do something similar (like boundary markers, which do not match any actual characters, they just enforce that a given condition holds at the place where it appears in the pattern). They provide a pattern and will make the match fail if the input does not match that pattern, but they do not actually move the match position forward. They are written between (`?=` and `?!`).
+
+- `?=`: matches a group after the main expression without including it in the result.
+
+- `?!`: specifies a group that can not match after the main expresion (if it matches, the result is discared).
 
 ```JS
-let conteoAnimales = /\b\d+ (cerdo|vaca|pollo)s?\b/
-
-console.log(conteoAnimales.test("15 cerdo")) // true
-console.log(conteoAnimales.test("15 cerdopollos")) // false
+console.log(/a(?=e)/.exec("braeburn")) // ["a"]
+console.log(/a(?! )/.exec("a b")) // null
 ```
 
-> `\b` representa un límite de palabra puede ser el inicio o el final del string o cualquier punto en el string que tenga un carácter de palabra (como en `\w`) en un lado y un carácter de no palabra en el otro.
+## Choice patterns
 
-## Las mecánicas del emparejamiento
+We can see the regular expression `\d+ (pig|cow|chicken)s?` like the following diagram:
 
-Podemos ver la expresión regular de la sección anterior como una máquina que sigue el siguiente diagrama de flujo.
+![regular expression diagram](./assets/10_1-regular_expression_diagram.svg)
 
-![Regular expression diagram](assets/Personal/Eloquent%20JavaScript/10-1_Regular_expression_diagram.svg)
+If we can find a path from the left side of the diagram to the right side, our expression matches...
 
-> Nuestra expresión coincide si podemos encontrar un camino desde el lado izquierdo del diagrama al lado derecho.
+## Backtracking
 
-## Retrocediendo
+It is possible to write regular expressions that will do a lot of backtracking. This problem occurs when a pattern can match a piece of input in many different ways.
 
-```JS
-let unNumero = /\b([01]+b|[\da-f]+h|\d+)\b/
+## The replace method
 
-console.log(unNumero.test("103")) // true
-console.log(unNumero.test("11afh")) // true
-```
-
-![Regular expression diagram](assets/Personal/Eloquent%20JavaScript/10-2_Regular_expression_diagram.svg)
-
-## El método `replace`
-
-Es posible pasar una función, en lugar de un string, como segundo argumento para replace. Para cada reemplazo, la función será llamada con los grupos coincidentes (así como con la coincidencia completa) como argumentos, y su valor de retorno se insertará en el nuevo string.
+The real power of using regular expressions with replace comes from the fact that we can refer to matched groups in the replacement string....
 
 ```JS
-console.log("papa".replace("p", "m")) // mapa
-
-console.log("Borobudur".replace(/[ou]/, "a")) // Barobudur
-console.log("Borobudur".replace(/[ou]/g, "a")) // Barabadar, "g" por global
-
 console.log(
-    "Liskov, Barbara\nMcCarthy, John\nWadler, Philip"
-        .replace(/(\w+), (\w+)/g, "$2 $1"))
+    "Liskov, Barbara\nMcCarthy, John\nMilner, Robin"
+        .replace(/(\p{L}+), (\p{L}+)/gu, "$2 $1")
+)
 // Barbara Liskov
 // John McCarthy
-// Philip Wadler
-// Puedes hacer referencia a la coincidencia completa con $&
-
-let s = "la cia y el fbi"
-
-console.log(s.replace(/\b(fbi|cia)\b/g,
-            str => str.toUpperCase())) // la CIA y el FBI
+// Robin Milner
 ```
 
-> Cuando una opción `g` (para global) se agrega a la expresión regular, todas las coincidencias en el string serán reemplazadas, no solo la primera.
+...The whole match can be referred to with `$&`.
 
-## Codicia
+## Greed
 
 ```JS
-function removerComentarios(codigo) {
-    return codigo.replace(/\/\/.*|\/\*[^]*\*\//g, "")
+function strip_comments(code) {
+    return code.replace(/\/\/.*|\/\*[^]*\*\//g, "")
 }
 
-console.log(removerComentarios("1 + /* 2 */3")) // 1 + 3
-console.log(removerComentarios("x = 10// ten!")) // x = 10
-console.log(removerComentarios("1 /* a */+/* b */ 1")) // 1  1
+console.log(strip_comments("1 + /* 2 */3")) // 1 + 3
+console.log(strip_comments("x = 10 // ten!")) // x = 10
+console.log(strip_comments("1 /* a */+/* b */ 1")) // 1  1
 ```
 
-Por defecto, los operadores de repetición (`+`, `*`, `?` y `{}`) son "codiciosos", lo que significa que coinciden con tanto como pueden y retroceden desde allí. Si colocas un signo de interrogación después de ellos (`+?`, `*?`, `??`, `{}?`), se vuelven no-codiciosos y comienzan a hacer coincidir lo menos posible, haciendo coincidir más solo cuando el patrón restante no se ajuste a la coincidencia más pequeña.
+We say the repetition operators (`+`, `*`, `?`, and `{}`) are **greedy**, meaning they match as much as they can and backtrack from there. If you put a question mark after them (`+?`, `*?`, `??`, `{}?`), they become nongreedy and start by matching as little as possible, matching more only when the remaining pattern does not fit the smaller match.
 
-## Creando objetos `RegExp` dinámicamente
+## The lastIndex property
+
+Regular expression objects have properties. One is `source`, which contains the string that expression was created from. Another is `lastIndex`, which controls, in some limited circumstances, where the next match will start.
+
+Those circumstances are that the regular expression must have the global (`g`) or sticky (`y`) option enabled, and the match must happen through `exec`.
 
 ```JS
-let nombre = "dea+hl[]rd";
-let texto = "Este sujeto dea+hl[]rd es super fastidioso.";
-let escapados = nombre.replace(/[\\[.+*?(){|^$]/g, "\\$&");
-let regexp = new RegExp("\\b" + escapados + "\\b", "gi");
-console.log(escapados); // dea\+hl\[]rd
-console.log(texto.replace(regexp, "_$&_")); // Este sujeto _dea+hl[]rd_ es super fastidioso.
+let pattern = /y/g
+pattern.lastIndex = 3
+let match = pattern.exec("xyzzy")
+console.log(match.index) // 4
+console.log(pattern.lastIndex) // 5
 ```
 
-## La propiedad `lastIndex`
-
-Los objetos de expresión regular tienen propiedades. Una de esas propiedades es `source` ("fuente"), que contiene el string de donde se creó la expresión. Otra propiedad es `lastIndex` ("ultimoIndice"), que controla, en algunas circunstancias limitadas, donde comenzará la siguiente coincidencia. Esas circunstancias son que la expresión regular debe tener la opción global (`g`) o adhesiva (`y`) habilitada, y la coincidencia debe suceder a través del método `exec`. De nuevo, una solución menos confusa hubiese sido permitir que un argumento adicional fuera pasado a `exec`, pero la confusión es una característica esencial de la interfaz de las expresiones regulares de JavaScript.
-
-```JS
-let patron = /y/g
-patron.lastIndex = 3
-let coincidencia = patron.exec("xyzzy")
-console.log(coincidencia.index) // 4
-console.log(patron.lastIndex) // 5
-```
-
-La diferencia entre las opciones globales y las adhesivas es que, cuando adhesivo está habilitado, la coincidencia solo tendrá éxito si comienza directamente en `lastIndex`, mientras que con global, buscará una posición donde pueda comenzar una coincidencia.
-
-> En la adhesiva la coincidencia solo tiene éxito si comienza directamente en `lastIndex`.
+The difference between the global and the sticky options is that when sticky is enabled, the match will succeed only if it starts directly at `lastIndex`, whereas with global, it will search ahead for a position where a match can start.
 
 ```JS
 let global = /abc/g
 console.log(global.exec("xyz abc")) // [ 'abc', index: 4, input: 'xyz abc', groups: undefined ]
+let sticky = /abc/y
+console.log(sticky.exec("xyz abc")) // null
+sticky.lastIndex = 4
+console.log(sticky.exec("xyz abc")) // [ 'abc', index: 4, input: 'xyz abc', groups: undefined ]
 
-let adhesivo = /abc/y
-console.log(adhesivo.exec("xyz abc")) // null
-
-adhesivo.lastIndex = 4
-console.log(adhesivo.exec("xyz abc")) // [ 'abc', index: 4, input: 'xyz abc', groups: undefined ]
 ```
 
-> Cuando se usa un valor de expresión regular compartido para múltiples llamadas a `exec`, estas actualizaciones automáticas a la propiedad `lastIndex` pueden causar problemas.
+When using a shared regular expression value for multiple `exec` calls, these automatic updates to the `lastIndex` property can cause problems...
 
-## Análisis de un archivo INI
+## Parsing an INI file
 
-Reglas de un archivo `INI`:
+The exact rules for this format (which is a widely used file format, usually called an INI file) are as follows:
 
-- Las líneas en blanco y líneas que comienzan con punto y coma se ignoran.
+- Blank lines and lines starting with semicolons are ignored.
 
-- Las líneas envueltas en `[` y `]` comienzan una nueva sección.
+- Lines wrapped in `[` and `]` start a new section.
 
-- Líneas que contienen un identificador alfanumérico seguido de un carácter `=` agregan una configuración a la sección actual.
+- Lines containing an alphanumeric identifier followed by an `=` character add a setting to the current section.
 
-- Cualquier otra cosa no es válida.
+- Anything else is invalid.
 
-## Caracteres internacionales
+## Code units and characters
 
-Debido a la simplista implementación inicial de JavaScript y al hecho de que este enfoque simplista fue luego establecido en piedra como comportamiento estándar, las expresiones regulares de JavaScript son bastante tontas acerca de los caracteres que no aparecen en el idioma inglés.
+Another design mistake that is been standardized in JavaScript regular expressions is that by default, operators like `.` or `?` work on code units..., not actual characters. This means characters that are composed of two code units behave strangely.
 
-```JS
-console.log(/🍎{3}/.test("🍎🍎🍎")) // false
-console.log(/<.>/.test("<🌹>")) // false
-console.log(/<.>/u.test("<🌹>")) // true
-```
+You must add the `u` (Unicode) option to your regular expression to make it treat such characters properly.
 
-Debe agregar una opción `u` (para Unicode) a tu expresión regular para hacerla tratar a tales caracteres apropiadamente.
+## Summary
 
-```JS
-console.log(/\p{Script=Greek}/u.test("α")) // true
-console.log(/\p{Script=Arabic}/u.test("α")) // false
-console.log(/\p{Alphabetic}/u.test("α")) // true
-console.log(/\p{Alphabetic}/u.test("!")) // false
-```
-
-Unicode define una cantidad de propiedades útiles, aunque encontrar la que necesitas puede no ser siempre trivial. Puedes usar la notación `\p{Property=Value}` para hacer coincidir con cualquier carácter que tenga el valor dado para esa propiedad. Si el nombre de la propiedad se deja afuera, como en `\p{Name}`, se asume que el nombre es una propiedad binaria como `Alfabético` o una categoría como `Número`.
-
-## Resumen
-
-|  Secuencia  |                         Significado                         |
-|:-----------:|:-----------------------------------------------------------:|
-|   `/abc/`   |                 Una secuencia de caracteres                 |
-|  `/[abc]/`  |       Cualquier carácter de un conjunto de caracteres       |
-| `/[^abc]/`  | Cualquier carácter que no esté en un conjunto de caracteres |
-|  `/[0-9]/`  |        Cualquier carácter en un rango de caracteres         |
-|   `/x+/`    |             Una o más ocurrencias del patrón x              |
-|   `/x+?/`   |            Una o más ocurrencias, no codiciosas             |
-|   `/x*/`    |                   Cero o más ocurrencias                    |
-|   `/x?/`    |                    Cero o una ocurrencia                    |
-| `/x{2,4}/`  |                 De dos a cuatro ocurrencias                 |
-|  `/(abc)/`  |                          Un grupo                           |
-| `/a\|b\|c/` |                Cualquiera de varios patrones                |
-|   `/\d/`    |                Cualquier carácter de dígito                 |
-|   `/\w/`    |      Un carácter alfanumérico ("carácter de palabra")       |
-|   `/\s/`    |           Cualquier carácter de espacio en blanco           |
-|    `/./`    |          Cualquier carácter excepto líneas nuevas           |
-|   `/\b/`    |                    Un límite de palabra                     |
-|    `/^/`    |                      Inicio de entrada                      |
-|    `/$/`    |                      Fin de la entrada                      |
-
-Las expresiones regulares son herramientas afiladas con un manejo incómodo. Ellas simplifican algunas tareas enormemente, pero pueden volverse inmanejables rápidamente cuando se aplican a problemas complejos. Parte de saber cómo usarlas es resistiendo el impulso de tratar de calzar cosas que no pueden ser expresadas limpiamente en ellas.
+Regular expressions are a sharp tool with an awkward handle. They simplify some tasks tremendously but can quickly become unmanageable when applied to complex problems. Part of knowing how to use them is resisting the urge to try to shoehorn things into them that they cannot cleanly express.
