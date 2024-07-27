@@ -4,116 +4,77 @@
 
 ## Modular programs
 
-Son un intento de evitar estos problemas. Un módulo es una pieza del programa que especifica en qué otras piezas este depende (sus **dependencias**) y qué funcionalidad proporciona para que otros módulos usen (su **interfaz**).
+...A module is a piece of program that specifies which other pieces it relies on and which functionality it provides for other modules to use (its **interface**).
 
-Las interfaces de los módulos tienen mucho en común con las interfaces de objetos.
+Module interfaces have a lot in common with object interfaces...They make part of the module available to the outside world and keep the rest private.
 
-Diseñar una estructura de módulo ajustada para un programa puede ser difícil. En la fase en la que todavía estás explorando el problema, intentando cosas diferentes para ver que funciona, es posible que desees no preocuparte demasiado por eso, ya que puede ser una gran distracción. Una vez que tengas algo que se sienta sólido, es un buen momento para dar un paso atrás y organizarlo.
+## ES modules
 
-## Paquetes
+Since ECMAScript $2015$, JavaScript supports two different types of programs. Scripts behave in the old way: their bindings are defined in the global scope, and they have no way to directly reference other scripts. **Modules** get their own separate scope and support the `import` and `export`, which are not available in scripts, to declare their dependencies and interface...
 
-Una de las ventajas de construir un programa a partir de piezas separadas, y ser capaces de ejecutar esas piezas por sí mismas, es que tú podrías ser capaz de aplicar la misma pieza en diferentes programas.
-
-Un paquete es un pedazo de código que puede ser distribuido (copiado e instalado). Puede contener uno o más módulos, y tiene información acerca de qué otros paquetes depende. Un paquete también suele venir con documentación que explica qué es lo que hace, para que las personas que no lo escribieron todavía puedan hacer uso de él.
-
-Necesitamos un lugar para almacenar y encontrar paquetes, y una forma conveniente de instalar y actualizarlos. En el mundo de JavaScript, esta infraestructura es provista por NPM.
-
-NPM es dos cosas: un servicio en línea donde uno puede descargar (y subir) paquetes, y un programa (incluido con Node.js) que te ayuda a instalar y administrarlos.
-
-## Módulos improvisados
+...Imported bindings can be renamed to give them a new local name using as after their name.
 
 ```JS
-const diaDeLaSemana = function() {
-    const nombres = ["Domingo", "Lunes", "Martes", "Miercoles",
-                    "Jueves", "Viernes", "Sabado"]
+import { day_name as nom_de_jour } from "./day_name.js"
+console.log(nom_de_jour(3)) // Wednesday
+```
 
-    return {
-        nombre(numero) { return nombres[numero] },
-        numero(nombre) { return nombres.indexOf(nombre) }
+A module may also have a special export named default, which is often used for modules that only export a single binding...
+
+```JS
+export default ["Winter", "Spring", "Summer", "Autumn"]
+```
+
+Such a binding is imported by omitting the braces around the name of the import.
+
+```JS
+import season_names from "./season_names.js";
+```
+
+To import all bindings from a module at the same time, you can use import `*`...
+
+```JS
+import * as day_name from "./day_name.js";
+console.log(day_name.dayName(3)) // Wednesday
+```
+
+## Packages
+
+One of the advantages of building a program out of separate pieces and being able to run some of those pieces on their own is that you might be able to use the same piece in different programs.
+
+...A package is a chunk of code that can be distributed (copied and installed). It may contain one or more modules and has information about which other packages it depends on. A package also usually comes with documentation explaining what it does so that people who did not write it might still be able to use it.
+
+We need a place to store and find packages and a convenient way to install and upgrade them. In the JavaScript world, this infrastructure is provided by [NPM](https://npmjs.com).
+
+NPM is two things: an online service where you can download (and upload) packages, and a program (bundled with Node.js) that helps you install and manage them.
+
+## CommonJS modules
+
+A CommonJS module looks like a regular script, but it has access to two bindings that it uses to interact with other modules. The first is a function called `require`. When you call this with the module name of your dependency, it makes sure the module is loaded and returns its interface. The second is an object named `exports`, which is the interface object for the module...
+
+CommonJS is implemented with a module loader that, when loading a module, wraps its code in a function (giving it its own local scope) and passes the require and exports bindings to that function as arguments.
+
+```JS
+function require(name) {
+    if (!(name in require.cache)) {
+        let code = read_file(name)
+        let exports = require.cache[name] = {}
+        let wrapper = Function("require, exports", code)
+        wrapper(require, exports)
     }
-}()
-
-console.log(diaDeLaSemana.nombre(diaDeLaSemana.numero("Domingo"))) // Domingo
-```
-
-## Evaluando datos como código
-
-```JS
-const x = 1
-
-function evaluarYRetornarX(codigo) {
-    eval(codigo)
-    return x
+    return require.cache[name];
 }
-
-console.log(evaluarYRetornarX("var x = 2")) // 2
+require.cache = Object.create(null);
 ```
 
-Una forma menos aterradora de interpretar datos como código es usar el constructor `Function`. Este toma dos argumentos: un string que contiene una lista de nombres de argumentos separados por comas y un string que contiene el cuerpo de la función.
+An important difference between this system and ES modules is that ES module imports happen before a module's script starts running, whereas `require` is a normal function, invoked when the module is already running. Unlike `import`, `require` calls can appear inside functions, and the name of the dependency can be any expression that evaluates to a string, whereas import allows only plain quoted strings.
 
-```JS
-let masUno = Function("n", "return n + 1")
-console.log(masUno(4)) // 5
-```
+## Building and bundling
 
-Esto es precisamente lo que necesitamos para un sistema de módulos. Podemos envolver el código del módulo en una función y usar el alcance de esa función como el alcance del módulo.
+Because fetching a single big file tends to be faster than fetching a lot of tiny ones, web programmers have started using tools that combine their programs (which they painstakingly split into modules) into a single big file before they publish it to the web. Such tools are called **bundlers**.
 
-## CommonJS
+...Apart from the number of files, the **size** of the files also determines how fast they can be transferred over the network. Thus, the JavaScript community has invented **minifiers**. These are tools that take a JavaScript program and make it smaller by automatically removing comments and whitespace, renaming bindings, and replacing pieces of code with equivalent code that take up less space.
 
-El enfoque más utilizado para incluir módulos en JavaScript es llamado **módulos CommonJS**. Node.js lo usa, y es el sistema utilizado por la mayoría de los paquetes en NPM.
+## Module design
 
-El concepto principal en los módulos CommonJS es una función llamada `require` ("requerir"). Cuando la llamas con el nombre del módulo de una dependencia, esta se asegura de que el módulo sea cargado y retorna su interfaz.
-
-Podemos definir `require`, en su forma más mínima, así:
-
-```JS
-require.cache = Object.create(null)
-
-function require(nombre) {
-    if (!(nombre in require.cache)) {
-        let codigo = leerArchivo(nombre)
-        let modulo = { exportaciones: { } }
-        require.cache[nombre] = modulo
-        let envolvedor = Function("require, exportaciones, modulo", codigo)
-        envolvedor(require, modulo.exportaciones, modulo)
-    }
-
-    return require.cache[nombre].exportaciones
-}
-```
-
-## Módulos ECMAScript
-
-Los módulos CommonJS funcionan bastante bien y, en combinación con NPM, han permitido que la comunidad de JavaScript comience a compartir código en una gran escala.
-
-Pero siguen siendo un poco de un truco con cinta adhesiva. La notación es ligeramente incómoda, las cosas que agregas a `exports` no están disponibles en el alcance local, por ejemplo. Y ya que `require` es una llamada de función normal tomando cualquier tipo de argumento, no solo un string literal, puede ser difícil de determinar las dependencias de un módulo sin correr su código primero.
-
-```JS
-import ordinal from "ordinal"
-import { days, months } from "date-names"
-
-export function formatDate(date, format) {/* ... */}
-```
-
-Cuando hay una vinculación llamada `default`, esta se trata como el principal valor del módulo exportado. Si importas un módulo como `ordinal` en el ejemplo, sin llaves alrededor del nombre de la vinculación, obtienes su vinculación `default`. Dichos módulos aún pueden exportar otras vinculaciones bajo diferentes nombres, además de su exportación por `default`.
-
-```JS
-export default ["Invierno", "Primavera", "Verano", "Otoño"]
-import { days as nombresDias } from "date-names"
-
-console.log(nombresDias.length) // 7
-```
-
-## Construyendo y empaquetando
-
-Incluir un programa modular que consiste de $200$ archivos diferentes en una página web produce sus propios problemas. Si buscar un solo archivo sobre la red tarda 50 milisegundos, cargar todo el programa tardaría 10 segundos, o tal vez la mitad si puedes cargar varios archivos simultáneamente. Eso es mucho tiempo perdido. Ya que buscar un solo archivo grande tiende a ser más rápido que buscar muchos archivos pequeños, los programadores web han comenzado a usar herramientas que convierten sus programas (los cuales cuidadosamente están divididos en módulos) de nuevo en un único archivo grande antes de publicarlo en la Web. Tales herramientas son llamadas **empaquetadores**.
-
-Y podemos ir más allá. Además de la cantidad de archivos, el **tamaño** de los archivos también determina qué tan rápido se pueden transferir a través de la red. Por lo tanto, la comunidad de JavaScript ha inventado **minificadores**. Estas son herramientas que toman un programa de JavaScript y lo hacen más pequeño al eliminar automáticamente los comentarios y espacios en blanco, cambia el nombre de las vinculaciones, y reemplaza piezas de código con código equivalente que ocupa menos espacio.
-
-## Resumen
-
-Los módulos proporcionan de estructura a programas más grandes al separar el código en piezas con interfaces y dependencias claras. La interfaz es la parte del módulo que es visible desde otros módulos, y las dependencias son los otros módulos este que utiliza.
-
-Debido a que históricamente JavaScript no proporcionó un sistema de módulos, el sistema CommonJS fue construido encima. Entonces, en algún momento, **consiguió** un sistema incorporado, que ahora coexiste incómodamente con el sistema CommonJS.
-
-Un paquete es una porción de código que se puede distribuir por sí misma. NPM es un repositorio de paquetes de JavaScript. Puedes descargar todo tipo de paquetes útiles (e inútiles) de él.
+Designing a fitting module structure for a program can be difficult. In the phase where you are still exploring the problem, trying different things to see what works, you might want to not worry about it too much, since keeping everything organized can be a big distraction. Once you have something that feels solid, that is a good time to take a step back and organize it.

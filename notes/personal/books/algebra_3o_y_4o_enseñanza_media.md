@@ -30,7 +30,7 @@ Son un par de números algebraicos que tienen el mismo valor absoluto, pero difi
 
 Obviamente, el significado semántico de los vocablos racional e irracional no se acomoda en manera alguna a los números aquí estudiados. Todo se debe a un error de traducción. En efecto, Euclides al clasificar sistemáticamente los números los dividió en dos grandes grupos que llamo **symmetros** (con medida) y **asymmetros** (sin medida) respectivamente. Y para señalar el hecho de que los números asymmetros no tenían expresión, los designo con la voz **alogos**. Gerardo de Cremona (1114 - 1187) al traducir un comentario árabe sobre Euclides, tomo los vocablos logos y alogos en su acepción de **razón** y no la de **palabra**, como quiso Euclides, y empleo erróneamente los términos **rationalis** e **irrationalis** para designar unos y otros. Este error se difundió durante toda la edad media hasta llegar a nosotros.
 
-![numerical sets](./assets/algebra_3o_y_4o_enseñanza_media/1-numerical_sets.jpg)
+![numerical sets](./assets/algebra_3o_y_4o_enseñanza_media/01-numerical_sets.jpg)
 
 ## Unidad II (adicción)
 
@@ -698,3 +698,375 @@ $$
 $$
 
 ### Solución de ecuaciones de tercer grado y regla de Kramen
+
+Sea el siguiente sistema de ecuaciones:
+
+$$
+\begin{array}{ccc}
+    & a_1 x + b_1 y + c_1 z & = & k_1 \\[5 pt]
+    & a_2 x + b_2 y + c_2 z & = & k_2 \\[5 pt]
+    & a_3 x + b_3 y + c_3 z & = & k_3
+\end{array}
+$$
+
+la regla de Krames establece lo siguiente:
+
+$$
+x = \frac{
+        \begin{vmatrix}
+            k_1 & b_1 & c_1 \\[5 pt]
+            k_2 & b_2 & c_2 \\[5 pt]
+            k_3 & b_3 & c_3
+        \end{vmatrix}
+    }
+    {
+        \begin{vmatrix}
+            a_1 & b_1 & c_1 \\[5 pt]
+            a_2 & b_2 & c_2 \\[5 pt]
+            a_3 & b_3 & c_3
+        \end{vmatrix}
+    }
+\quad
+y = \frac{
+        \begin{vmatrix}
+            a_1 & k_1 & c_1 \\[5 pt]
+            a_2 & k_2 & c_2 \\[5 pt]
+            a_3 & k_3 & c_3
+        \end{vmatrix}
+    }
+    {
+        \begin{vmatrix}
+            a_1 & b_1 & c_1 \\[5 pt]
+            a_2 & b_2 & c_2 \\[5 pt]
+            a_3 & b_3 & c_3
+        \end{vmatrix}
+    }
+\quad
+z = \frac{
+        \begin{vmatrix}
+            a_1 & b_1 & k_1 \\[5 pt]
+            a_2 & b_2 & k_2 \\[5 pt]
+            a_3 & b_3 & k_3
+        \end{vmatrix}
+    }
+    {
+        \begin{vmatrix}
+            a_1 & b_1 & c_1 \\[5 pt]
+            a_2 & b_2 & c_2 \\[5 pt]
+            a_3 & b_3 & c_3
+        \end{vmatrix}
+    }
+$$
+
+### Representación gráfica de un punto en el espacio
+
+![representación gráfica de un punto en el espacio](./assets/algebra_3o_y_4o_enseñanza_media/02-epresentacion_grafica_de_un_punto_en_el_espacio.svg)
+
+...**abscisa** de un punto es la distancia al plano $yz$. **Ordenada** de un punto es la distancia al plano $xz$. **Cota** de un punto es la distancia al plano $xy$.
+
+### Representación gráfica de una ecuación de primer grado con tres incógnitas
+
+Una ecuación de primer grado con tres variables representa un plano. En general, una ecuación de la forma $a x + b y + c z = k$ se representa en el plano indeterminado que pasa por los puntos $(a_1,0,0)$, $(0,b_1,0)$ y $(0,0,c_1)$ en que:
+
+$$
+a = \frac{ k }{ a } \quad b = \frac{ k }{ b } \quad c = \frac{ k }{ c }
+$$
+
+## Unidad XVI (ecuaciones de segundo grado con una incógnita)
+
+### Ecuaciones de segundo grado
+
+### Ecuación completa (ecuaciones de segundo grado)
+
+Una ecuación de segundo grado es completa si contiene, además de la segunda potencia de la incógnita, la primera potencia de la incógnita y un término independiente.
+
+### Ecuación incompleta (ecuaciones de segundo grado)
+
+Una ecuación de segundo grado es incompleta si carece del término independiente, o de la primera potencia de la incógnita.
+
+### Solucion general
+
+La fórmula general de una ecuación de segundo grado es:
+
+$$
+a x^2 + b x + c = 0 \quad a x^2 + b x = -c
+$$
+
+Para hacer del primer miembro un cuadrado perfecto, multipliquemos todos los términos de la igualdad por $4 a$ y sumemos $b^2$ a ambos miembros.
+
+$$
+4 a^2 x^2 + 4 a b x + b^2 = b^2 - 4 a c \quad (2 a x + b)^2 = b^2 - 4 a c \\[10 pt]
+
+2 a x + b = \pm \sqrt{ b^2 - 4 a c } \quad x = \frac{ -b \pm \sqrt{ b^2 - 4 a c } }{ 2 }
+$$
+
+Estas raíces pueden ser reales o imaginarias, según que el radicar $\sqrt{ b^2 - 4 a c }$ sea una cantidad real o imaginaria. Esta cantidad recibe el nombre de **discriminante** o **realizante**, ya que de ella depende la "realidad" de las raíces.
+
+## Relación entre las raíces y los coeficientes de la ecuación de segundo grado
+
+Si tenemos la ecuación general de segundo grado:
+
+$$
+a x^2 + b x + c = 0
+$$
+
+sabemos que sus raíces son:
+
+$$
+x_1 = \frac{ -b + \sqrt{ b^2 - 4 a c } }{ 2 } \quad x_2 = \frac{ -b - \sqrt{ b^2 - 4 a c } }{ 2 }
+$$
+
+por tanto:
+
+$$
+x_1 + x_2 = \frac{ -2 b }{ 2 a } = -\frac{ b }{ a } \quad x_1 x_2 = \frac{ b^2 - (b^2 - 4 a c) }{ 4 a^2 } = \frac{ c }{ a }
+$$
+
+...Esta regla permite resolver una ecuación de la forma $x^2 + b x + c = 0$ por simple inspección; es decir, por factorización. En efecto:
+
+$$
+x_1 + x_2 = \frac{ -b }{ 1 } = -b \quad x_1 x_2 = \frac{ c }{ 1 } = c
+$$
+
+### Representación gráfica de la función $y = a x^2 + b x + c$
+
+Para determinar el valor mínimo de $y$ procedemos así:
+
+$$
+y = x^2 + b x + c
+$$
+
+Multipliquemos por cuatro todos los términos de la igualdad; luego sumemos y restemos $b^2$ al segundo miembro.
+
+$$
+4 y = 4 x^2 + 4 b x + 4 c + b^2 - b^2 \quad y = \frac{ 4 x^2 + 4 b x + 4 c + b^2 - b^2 }{ 4 } = \frac{ (2 x + b)^2 + 4 c - b^2 }{ 4 }
+$$
+
+El valor mínimo de la fracción depende del término $(2 x + b)^2$ donde aparece la variable $x$. $(2 x +b)^2$ no puede ser negativo, por tanto, su valor mínimo es $0$.
+
+$$
+2 x + b = 0 \quad x = \frac{ -b }{ 2 }
+$$
+
+Asi el valor minimo de $y$ es $\frac{ 4 c - b^2 }{ 4 }$.
+
+En el caso de una ecuación de la forma $-x^2 + b x + c$, se procede de una forma similar, pero se llega a los siguientes resultados:
+
+$$
+x = \frac{ b }{ 2 } \quad y = \frac{ 4 c + b^2 }{ 4 }
+$$
+
+> Este en el caso en el que el vortice es maximo.
+
+## Unidad XVII (análisis gráfico de la ecuación de segundo grado)
+
+### Parábola
+
+#### Elipse
+
+La representación gráfica de una ecuación de la forma $a x^2 + b y^2 = c$ es una elipse.
+
+### Circunferencia
+
+La representacion grafica de una ecuacion de la forma $x^2 + y^2 = k$ es una circunferencia.
+
+### Hipérbola
+
+La representación gráfica de una ecuación de la forma $x y = c$ es una hipérbola.
+
+En la gráfica de una hipérbola puede observarse que a medida que $y$ tiende a cero, la curva crece en valor absoluto en $x$, pero nunca corta el eje de las equis. Lo mismo ocurre con la ordenada $y$, cuando $x$ tiende a cero. En este caso se dice que la curva es asintótica con respecto al eje de referencia y viceversa.
+
+Tanto la curva como el eje reciben el nombre de asíntotas.
+
+### Analisis de la ecuacion completa de segundo grado con dos variables
+
+...una ecuacion de segundo grado con dos variables es de la forma:
+
+$$
+a x^2 + b x y + c y^2 + e y + f = 0
+$$
+
+Para que la ecuacion sea considerada de segundo grado con dos variables no es necesario que contenga todos los terminos de la forma general, basta que tenga las dos variables y al menos una de ellas sea de segundo grado. O basta con que la ecuacion contenga el producto de las primeras potencias de las dos variables...
+
+Segun ciertas condiciones, podemos clasificar la curva en ciertos generos:
+
+- $b^2 - a c > 0$: hiperbola.
+
+- $b^2 - a c = 0$: parabola.
+
+- $b^2 - a c < 0$: elipse.
+
+## Unidad XIX (números complejos)
+
+### Números imaginarios
+
+En general, toda expresión de la forma $\sqrt{ -b }$, en que $n$ es par y $-b$ una cantidad real negativa, la expresión es imaginaria pura.
+
+Si un número es de la forma $\sqrt{ -b }$, en que $b$ es un número real positivo, es conveniente escribirlo en la forma propia de los números imaginarios, esto es $\sqrt{ b } i$, con esto se facilitan las operaciones que se han de efectuar con tales números.
+
+Se dice que dos números imaginarios son conjugados cuando solo difieren en signo...
+
+Todas las leyes algebraicas establecidas para las cantidades reales pueden ser aplicadas a las imaginarias con una sola excepción y esta excepción es una consecuencia lógica de la definición de unidad imaginaria.
+
+$$
+\sqrt{ a } \sqrt{ b } = \sqrt{ a b } \quad a,b \in \mathbb{ R }
+$$
+
+Esta propiedad no se cumple para los números imaginarios.
+
+$$
+\sqrt{ -a } \sqrt{ -b } = \sqrt{ -a * -b } = \sqrt{ a b }
+$$
+
+pero por definición sabemos que:
+
+$$
+\sqrt{ -a } \sqrt{ -b } = \sqrt{ a } i \sqrt{ b } i = -\sqrt{ a b }
+$$
+
+### Números complejos
+
+La solución general de la ecuación cuadrática $a x^2 + b x + c$ es $m \pm n \sqrt{ p }$, en que tanto $m$, $n$ como $p$ son números reales en cualquier caso, $\sqrt{ p }$ será un número imaginario si $p$ es una cantidad negativa. Por tanto, es necesario tener números de la forma $m + n i$... A esta combinación de números reales con imaginarios se da el nombre de números complejos.
+
+Dos números complejos son conjugados cuando sus partes reales son iguales y sus partes imaginarias son conjugadas...
+
+### Representación gráfica de números complejos
+
+El plano determinado por los ejes cartesianos y que sirve para la representación gráfica de los números complejos recibe el nombre de plano gaussiano en memoria de Federico Gauss...
+
+### Operaciones con los números complejos
+
+#### Division (números complejos)
+
+$$
+\frac{ a + b i }{ c + d i } = \frac{ (a + b i) (c - d i) }{ (c + d i) (c - d i) } = \frac{ a c + b d + (b c - a d) i }{ c^2 + d^2 } = \frac{ a c + b d }{ c^2 + d^2 } + \frac{ (b c - a d) i }{ c^2 + d^2 }
+$$
+
+## Unidad XX (progresiones aritmeticas)
+
+### Definiciones
+
+#### Serie
+
+Es una sucesión de términos algebraicos formados de acuerdo con una ley...
+
+#### Progresión aritmética
+
+Es una **serie** de términos tales, que cada uno de ellos es igual al inmediatamente anterior, sumado con una cantidad constante llamada **razón** de la progresión.
+
+El símbolo usado para designar las progresiones aritméticas es $\div$ y se coloca al principio de una progresión. Entre cada término y el siguiente se acostumbra a usar un punto.
+
+### Termino cualquiera de una progresion aritmetica
+
+Cualquier término de una progresión aritmética es igual al primero, sumado con el producto de la razón por el número de términos que le anteceden...
+
+$$
+\div a_1.a_2.a_3.a_4.a_5.a_6\dots.a_n
+$$
+
+$$
+a_1 = a \\[10 pt]
+
+a_2 = a + r \\[10 pt]
+
+a_3 = a_2 + r = (a + r) + r = a + 2 r \\[10 pt]
+
+a_4 = a_3 + r = (a + 2 r) + r = a + 3 r \\[10 pt]
+
+a_5 = a_4 + r = (a + 3 r) + r = a + 4 r \\[10 pt]
+
+a_6 = a_5 + r = (a + 4 r) + r = a + 5 r
+$$
+
+$$
+a_n = a + (n - 1) r
+$$
+
+Si se tiene una progresión aritmética limitada, la suma de dos términos equidistantes de los extremos es constante y dicha constante es igual a la suma de los extremos.
+
+En efecto, si tenemos la progresión:
+
+$$
+\div a_1.a_2.a_3.a_4.a_5.a_6\dots.a_n
+$$
+
+Sea $a_{ n_1 }$ y $a_{ n_2 }$ dos terminos equidistantes.
+
+$$
+a_{ n_1 } = a + (n_1 - 1) r \\[10 pt]
+
+a_{ n_2 } = a + (n_2 - 1) r \\[10 pt]
+
+n_1 + n_2 = n + 1 \quad n_2 = n + 1 - n_1
+$$
+
+$$
+\begin{array}{lcr}
+    & a_{ n_1 } + a_{ n_2 } & = & (a + (n_1 - 1) r) + (a + (n + 1 - n_1 - 1) r) \\[5 pt]
+
+    &                       & = & 2 a + (n - 1) r
+\end{array}
+$$
+
+Comparemos este resultado general con la suma de los extremos.
+
+$$
+a_1 + a_n = a + (a + (n - 1) r) = 2 a + (n - 1) r
+$$
+
+Como es el mismo, queda comprobado que la suma de dos términos equidistantes de los extremos es constante y dicha constante es igual a la suma de los extremos.
+
+### Suma de una progresión aritmética
+
+La suma de los términos de una progresión aritmética limitada es igual al producto de la semisuma de los extremos por el número de términos.
+
+$$
+\begin{array}{lcr}
+    & S & = & a_1 + a_2 + \dots + a_n \\[5 pt]
+
+    & S & = & a_n + a_{ n - 1} + \dots + a_1 \\[5 pt]
+    \hline \\[5 pt]
+
+    & 2 S & = &(a_1 + a_n) + (a_2 + a_{ n - 1}) + \dots + (a_n + a_1)
+\end{array}
+$$
+
+Puede observarse que cada binomio es la suma de dos términos equidistante; y esta suma, como vimos, es constante e igual a $a_1 + a_n$. Ahora hay tantos binomios como términos tiene la serie.
+
+$$
+S = \frac{ (a_1 + a_n) n }{ 2 }
+$$
+
+### Elementos de la progresión aritmética
+
+Si partimos de la formula:
+
+$$
+a_n = a_1 + (n - 1) r
+$$
+
+podemos despejar cada uno de los elementos de la progresion en funcion de todos los demas.
+
+$$
+a_1 = a_n - (n - 1) r \\[10 pt]
+
+r = \frac{ a_n - a_1 }{ n - 1 } \\[10 pt]
+
+n = \frac{ a_n - a_1 + r }{ r }
+$$
+
+### Medios aritméticos
+
+Reciben el nombre de medios aritméticos todos los términos que están entre el primero y último término de una progresión aritmética...
+
+Si $a$ y $b$ son dos números, interpólense entre ellos $m$ medios aritméticos.
+
+Para ellos buscamos primero la razón. El número de términos de la progresión será igual a $m + 2 = n$...
+
+$$
+r = \frac{ b - a }{ m + 2 - 1 } = \frac{ b - a }{ m + 1 }
+$$
+
+### Representación gráfica de la progresión aritmética
+
+Podemos ver la fórmula general de una progresión aritmética $a_n = a_1 + (n - 1) r$ como la ecuación $y = a + b x$, donde $y$ (variable independiente) es en enésimo término de una progresión; $a$ (constante) el primer término de la progresión; $x$ (variable independiente) número de términos que anteceden a $y$ y $b$ (constante) razón de progresión.
