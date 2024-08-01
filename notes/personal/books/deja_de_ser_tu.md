@@ -8,7 +8,7 @@
 
 - Tal vez pienses que tu entorno y tus pensamientos no se parecen tanto como afirmo y que no estás reproduciendo la misma realidad de siempre. Pero si consideras que en tu cerebro está almacenado todo tu pasado y que tu mente es producto de tu conciencia, en cierto sentido **siempre estás pensando en el pasado**. Al responder con la misma configuración cerebral que coincide con lo que recuerdas, estás creando un nivel de mente idéntico al del pasado, porque tu cerebro está activando automáticamente los circuitos existentes para reflejar todo lo conocido y experimentado y que, por lo tanto, puedes prever. Según la ley cuántica (que por cierto sigue actuando en ti), tu pasado se está convirtiendo ahora en tu futuro.
 
-- ¿Por qué esperas en el fondo que te ocurra algo distinto en la vida si cada día tienes los mismos pensamientos, actúas de la misma manera y sientes las mismas emociones? ¿acaso no es esto la definición de insensatez? Todos hemos caído en alguna época u otra en este limitado estilo de vida...
+- ¿Por qué esperas en el fondo que te ocurra algo distinto en la vida si cada día tienes los mismos pensamientos, actúas de la misma manera y sientes las mismas emociones? ¿Acaso no es esto la definición de insensatez? Todos hemos caído en alguna época u otra en este limitado estilo de vida...
 
 - Cuando nuestra conducta coincide con nuestras intenciones, cuando nuestras acciones están de acuerdo con nuestros pensamientos, cuando la mente y el cuerpo actúan juntos, cuando nuestras palabras son coherentes con nuestras acciones, detrás de nosotros hay un poder inmenso.
 

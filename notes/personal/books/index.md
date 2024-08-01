@@ -43,3 +43,9 @@
 - Author: Kazuo Ishiguro.
 
 - Language: Spanish.
+
+## [Un mundo feliz](./un_mundo_feliz.md)
+
+- Author: Aldous Huxley.
+
+- Language: Spanish.

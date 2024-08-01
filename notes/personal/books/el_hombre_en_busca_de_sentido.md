@@ -1,10 +1,10 @@
 # El hombre en busca de sentido
 
-- ...Es la historia íntima de un campo de concentración contada por uno de sus supervivientes. No se ocupa de los grandes horrores que ya han sido suficiente y prolijamente descritos (aunque no siempre y no todos los hayan creído), sino que cuenta esa otra multitud de pequeños tormentos. En otras palabras, pretende dar respuesta a la siguiente pregunta: ¿cómo incidía la vida diaria de un campo de concentración en la mente del prisionero medio?
+- ...Es la historia íntima de un campo de concentración contada por uno de sus supervivientes. No se ocupa de los grandes horrores que ya han sido suficiente y prolijamente descritos (aunque no siempre y no todos los hayan creído), sino que cuenta esa otra multitud de pequeños tormentos. En otras palabras, pretende dar respuesta a la siguiente pregunta: ¿Cómo incidía la vida diaria de un campo de concentración en la mente del prisionero medio?
 
 - ...Los que hemos vuelto de allí gracias a multitud de casualidades fortuitas o milagros (como cada cual prefiera llamarlos) lo sabemos bien: los mejores de entre nosotros no regresaron.
 
-- ...¿pero es que el hombre que hace sus observaciones mientras está prisionero puede tener ese distanciamiento necesario? solo los que son ajenos al caso pueden garantizarlo, pero es mucha su lejanía para que lo que puedan decir sea realmente válido...
+- ...¿Pero es que el hombre que hace sus observaciones mientras está prisionero puede tener ese distanciamiento necesario? solo los que son ajenos al caso pueden garantizarlo, pero es mucha su lejanía para que lo que puedan decir sea realmente válido...
 
 - ...Si alguien nos preguntara sobre la verdad de la afirmación de Dostoyevski que asegura terminantemente que el hombre es un ser que puede ser utilizado para cualquier cosa, contestaríamos: "cierto, para cualquier cosa, pero no nos preguntéis cómo".
 
@@ -28,7 +28,7 @@
 
 - ...Uno se convertía literalmente en un número: que estuviera muerto o vivo no importaba, ya que la vida de un "número" era totalmente irrelevante...
 
-- ...Pero, ¿y qué decir de la libertad humana? ¿no hay una libertad espiritual con respecto a la conducta y a la reacción ante un entorno dado? ¿es cierta la teoría que nos enseña que el hombre no es más que el producto de muchos factores ambientales condicionantes, sean de naturaleza biológica, psicológica o sociológica? ¿el hombre es sólo un producto accidental de dichos factores? y, lo que es más importante, ¿las reacciones de los prisioneros ante el mundo singular de un campo de concentración, son una prueba de que el hombre no puede escapar a la influencia de lo que le rodea? ¿es que frente a tales circunstancias no tiene posibilidad de elección? podemos contestar a todas estas preguntas con base en la experiencia y también con arreglo a los principios...
+- ...Pero, ¿Y qué decir de la libertad humana? ¿No hay una libertad espiritual con respecto a la conducta y a la reacción ante un entorno dado? ¿Es cierta la teoría que nos enseña que el hombre no es más que el producto de muchos factores ambientales condicionantes, sean de naturaleza biológica, psicológica o sociológica? ¿El hombre es sólo un producto accidental de dichos factores? y, lo que es más importante, ¿Las reacciones de los prisioneros ante el mundo singular de un campo de concentración, son una prueba de que el hombre no puede escapar a la influencia de lo que le rodea? ¿Es que frente a tales circunstancias no tiene posibilidad de elección? podemos contestar a todas estas preguntas con base en la experiencia y también con arreglo a los principios...
 
 - Los que estuvimos en campos de concentración recordamos a los hombres que iban de barracón en barracón consolando a los demás, dándoles el último trozo de pan que les quedaba. Puede que fueran pocos en número, pero ofrecían pruebas suficientes de que al hombre se le puede arrebatar todo, salvo una cosa: la última de las libertades humanas (la elección de la actitud personal ante un conjunto de circunstancias) para decidir su propio camino.
 
@@ -48,7 +48,7 @@
 
 - Nosotros hemos tenido la oportunidad de conocer al hombre, quizá mejor que ninguna otra generación. ¿Qué es, en realidad, el hombre? es el ser que siempre decide lo que es. Es el ser que ha inventado las cámaras de gas, pero asimismo es el ser que ha entrado en ellas con paso firme musitando una oración.
 
-- Por la tarde y cuando otra vez nos encontramos en nuestro barracón, un hombre le dijo en secreto a otro: "¿dime, estuviste hoy contento?" y el otro le contestó un tanto avergonzado, pues no sabía que los demás sentíamos de igual modo: "para ser franco: no". Literalmente hablando, habíamos perdido la capacidad de alegrarnos y teníamos que volverla a aprender, lentamente.
+- Por la tarde y cuando otra vez nos encontramos en nuestro barracón, un hombre le dijo en secreto a otro: "¿Dime, estuviste hoy contento?" y el otro le contestó un tanto avergonzado, pues no sabía que los demás sentíamos de igual modo: "para ser franco: no". Literalmente hablando, habíamos perdido la capacidad de alegrarnos y teníamos que volverla a aprender, lentamente.
 
 - ...Lo que el hombre realmente necesita no es vivir sin tensiones, sino esforzarse y luchar por una meta que le merezca la pena...
 

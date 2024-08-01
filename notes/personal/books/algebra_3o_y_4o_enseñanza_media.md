@@ -525,7 +525,7 @@ Se llama **proporción** a la igualdad de dos razones...
 
 ### Raiz enesima de una expresion algebraica
 
-Distingamos todas las partes de la expresión algebraica $\sqrt[ n ]{ a }$. En primer lugar, $\sqrt{}$ es el símbolo llamado **radical** que se utiliza para indicar la operación de radicación; $n$ es el **índice** que indica el grado de la radicación, suele omitirse cuando $n = 2$ o sea raíz cuadrada; $a$ es la cantidad llamada **subradical** y representa la expresión a la cual se va a extraer la raíz del grado indicado por el índice.
+Distingamos todas las partes de la expresión algebraica $\sqrt[ n ]{ a }$. En primer lugar, $\sqrt{ }$ es el símbolo llamado **radical** que se utiliza para indicar la operación de radicación; $n$ es el **índice** que indica el grado de la radicación, suele omitirse cuando $n = 2$ o sea raíz cuadrada; $a$ es la cantidad llamada **subradical** y representa la expresión a la cual se va a extraer la raíz del grado indicado por el índice.
 
 ### Cantidades imaginarias
 
@@ -1024,10 +1024,10 @@ $$
 \begin{array}{lcr}
     & S & = & a_1 + a_2 + \dots + a_n \\[5 pt]
 
-    & S & = & a_n + a_{ n - 1} + \dots + a_1 \\[5 pt]
+    & S & = & a_n + a_{ n - 1 } + \dots + a_1 \\[5 pt]
     \hline \\[5 pt]
 
-    & 2 S & = &(a_1 + a_n) + (a_2 + a_{ n - 1}) + \dots + (a_n + a_1)
+    & 2 S & = &(a_1 + a_n) + (a_2 + a_{ n - 1 }) + \dots + (a_n + a_1)
 \end{array}
 $$
 
@@ -1070,3 +1070,349 @@ $$
 ### Representación gráfica de la progresión aritmética
 
 Podemos ver la fórmula general de una progresión aritmética $a_n = a_1 + (n - 1) r$ como la ecuación $y = a + b x$, donde $y$ (variable independiente) es en enésimo término de una progresión; $a$ (constante) el primer término de la progresión; $x$ (variable independiente) número de términos que anteceden a $y$ y $b$ (constante) razón de progresión.
+
+## Unidad XXI (progresiones geométricas)
+
+### Definiciones (progresiones geométricas)
+
+Progresión geométrica es una serie de términos tales, que cada uno de ellos es igual al inmediatamente anterior multiplicado por una cantidad constante llamada **razón** de la progresión.
+
+El símbolo usado para designar las progresiones geométricas es $\div\div$; y entre los términos de la progresión se usa el símbolo $:$.
+
+Una progresión geométrica es creciente cuando el valor absoluto de la razón es mayor que $1$ y decreciente cuando el valor absoluto de la razón es menor que $1$.
+
+### Término cualquiera de una progresión geométrica
+
+Un término cualquiera de una progresión geométrica es igual al producto entre el primer término y la razón de la progresión elevada a una potencia igual al número de términos que anteceden...
+
+$$
+\div\div a_1:a_2:a_3\dots:a_n
+$$
+
+Según la definición podemos escribir:
+
+$$
+a_1 = a \\[10 pt]
+
+a_2 = a_1 r = a r \\[10 pt]
+
+a_3 = a_2 r = a r^2 \\[10 pt]
+
+a_n = a r^{ n - 1 }
+$$
+
+### Términos equidistantes de los extremos
+
+Si se tiene una progresión geométrica limitada, el producto de dos términos equidistantes de los extremos es contante y es igual al producto de dichos extremos. En efecto, si tenemos la progresión:
+
+$$
+\div\div a_1:a_2:a_3:a_4:a_5:a_6\dots:a_n
+$$
+
+Sea $a_{ n_1 }$ y $a_{ n_2 }$ dos términos equidistantes.
+
+$$
+a_{ n_1 } = a r^{ n_1 - 1 } \\[10 pt]
+
+a_{ n_2 } = a r^{ n_2 - 1 } \\[10 pt]
+
+n_1 + n_2 = n + 1 \quad n_2 = n + 1 - n_1
+$$
+
+$$
+\begin{array}{lcr}
+     & a_{ n_1 } * a_{ n_2 } & = & (a r^{ n_1 - 1 }) * (a r^{ n + 1 - n_1 - 1 }) \\[5 pt]
+
+     &                       & = & a^2 r^{ n - 1 }
+\end{array}
+$$
+
+Comparemos este resultado general con el producto de los extremos.
+
+$$
+a_1 * a_n = a * a r^{ n - 1 } = a^2 r^{ n - 1 }
+$$
+
+Como es el mismo, queda comprobado que el producto de dos términos equidistantes de los extremos es contante y es igual al producto de dichos extremos.
+
+Cuando el número de términos es de una progresión es impar, el término central es igual a la raíz cuadrada del producto de los extremos.
+
+### Suma de una progresion geometrica
+
+La suma de una progresion geometrica es igual a la diferencia entre el producto del ultimo termino y la razon menos el primer termino, dividida por la diferencia de la razon y uno.
+
+$$
+\div\div a_1:a_2:\dots:a_n
+$$
+
+$$
+S = a_1 + a_2 + \dots + a_n \quad (1) \\[10 pt]
+
+S r = a_1 r + a_2 r + \dots + a_n r \quad (2)
+$$
+
+Restamos $(2)$ con $(1)$.
+
+$$
+\begin{array}{lcr}
+    & S r     & = & a_1 r + a_2 r + \dots + a_n r \\[5 pt]
+
+    & S       & = & a_1 + a_2 + \dots + a_n  \\[5 pt]
+
+    \hline \\[5 pt]
+
+    & S r - S & = & a_n r - a
+\end{array}
+$$
+
+$$
+S = \frac{ a_n r - a }{ r - 1 }
+$$
+
+### Suma de una progresion geometrica decreciente infinita
+
+La suma de una progresion geometrica decreciente tiene un limite.
+
+$$
+S = \frac{ a_n r - a }{ r - 1 } = \frac{ a r^{ n - 1 } r - a }{ r - 1 } = \frac{ a }{ 1 - r } (1 - r^n)
+$$
+
+$$
+\lim_{ n \to \infty } { \frac{ a }{ 1 - r } (1 - r^n) } = \frac{ a }{ 1 - r }
+$$
+
+### Elementos de la progresion geometrica
+
+$$
+a = \frac{ x }{ r^{ n - 1 } } \\[10 pt]
+
+r = \sqrt[ n - 1 ]{ \frac{ x }{ a } } \\[10 pt]
+
+n = \frac{ \log x - \log a }{ \log r } - 1
+$$
+
+### Medios geométricos
+
+Reciben el nombre de medios aritméticos todos los términos que están entre el primero y último término de una progresión geométrica...
+
+Si $a$ y $b$ son dos números, interpólense entre ellos $m$ medios geométricos.
+
+Para ellos buscamos primero la razón. El número de términos de la progresión será igual a $m + 2 = n$...
+
+$$
+r = \sqrt[ n - 1 ]{ \frac{ x }{ a } } = \sqrt[ m + 1 ]{ \frac{ b }{ a } }
+$$
+
+### Fracción decimal periódica
+
+Si tenemos una fracción decimal de la forma:
+
+$$
+0.\bar{ a } = \sum_{ i = \operatorname{ digts }(a) }^\infty { \frac{ a }{ 10^i } }
+$$
+
+podemos afirmar que se trata de la suma de una progresión geométrica decreciente infinita, cuya generatriz es la siguiente:
+
+$$
+S = \frac{ \frac{ a }{ 10^{ \operatorname{ digts }(a) } } }{ 1 - \frac{ 1 }{ 10^{ \operatorname{ digts }(a) } } }
+$$
+
+### Representación gráfica de la progresión geométrica
+
+$a_n = a r^{ n - 1 }$, en que $a_n$ es el último término o enésimo término de la progresión geométrica, $a$ el primer término, $r$ la razón y $n$ el número de términos, nos permite asimilarla a una función de la forma $y = a b^x$, en que $y$, como enésimo término de la progresión, es la variable dependiente; $a$ y $b$ son constantes y representan respectivamente el primer término y la razón; $x$ es la variable independiente y representa el número de términos que le anteceden a $y$.
+
+## Unidad XXII (logaritmos)
+
+### Definición (logaritmos)
+
+Logaritmo de un número es el exponente a que hay que elevar otro número llamado **base** para obtener dicho número...
+
+### Logaritmos vulgares o de Briggs
+
+Siendo pues ilimite el sistema de números positivos, también lo es el número de sistemas de logaritmos. No obstante, los sistemas generalmente usados en matemáticas se reducen a dos: el vulgar, llamado también de Briggs, cuya base es $10$; y el sistema de logaritmos naturales o neperianos, cuya base es el número de Euler.
+
+### Propiedades generales de los algoritmos
+
+1. La base de un sistema de logaritmos es siempre positiva. En efecto, si fuera negativa, sus potencias pares serían positiva y sus potencias impares serían negativas, lo cual originaria un sistema de números alternativamente positivo y negativos y, por tanto, habría números positivos sin logaritmo.
+
+2. Los números negativos no tienen logaritmo. Esto es una consecuencia de la propiedad anterior, pues siendo la base positiva todas sus potencias son positivas.
+
+3. En todo sistema de logaritmos, el logaritmo de $1$ es $0$...
+
+4. En todo sistema de logaritmos, el logaritmo de la base es $1$.
+
+5. Como consecuencia de la propiedad $3$ los números mayores que $1$ tienen logaritmo positivo; y los números menores que $1$, tiene logaritmo negativo.
+
+### logaritmación de las operaciones indicadas
+
+1. El logaritmo de un producto es igual a la suma de los logaritmos de sus factores.
+
+    $$
+    \log { A B } = \log A + \log B
+    $$
+
+    En efecto; si
+
+    $$
+    A = b^x \quad \log A = x \\[10 pt]
+
+    B = b^y \quad \log B = y \\[10 pt]
+    $$
+
+    $$
+    A B = b^x b^y = b^{ x + y } \\[10 pt]
+
+    \log { A B } = x + y = \log A + \log B
+    $$
+
+2. El logaritmo de un cociente es igual a la diferencia entre el logaritmo del dividiendo y el logaritmo del diviror.
+
+    $$
+    \log \frac{ A }{ B } = \log A - \log B
+    $$
+
+    En efecto; si
+
+    $$
+    A = b^x \quad \log A = x \\[10 pt]
+
+    B = b^y \quad \log B = y \\[10 pt]
+    $$
+
+    $$
+    \frac{ A }{ B } = \frac{ b^x }{ b^y } = b^{ x - y }  \\[10 pt]
+
+    \log \frac{ A }{ B } = x - y = \log A - \log B
+    $$
+
+3. El logaritmo de una potencia es igual al producto del exponente por el logaritmo de la base.
+
+    $$
+    \log A^n = n \log A
+    $$
+
+    En efecto; si
+
+    $$
+    A = b^x \quad \log A = x \\[10 pt]
+    $$
+
+    $$
+    A^n = b^{ n x } \\[10 pt]
+
+    \log A^n = n x = n \log A
+    $$
+
+### Cologaritmo
+
+Cologaritmo de un número es el logaritmo de su inverso.
+
+$$
+\operatorname { colog }(x) = \log \frac{ 1 }{ x } \\[10 pt]
+
+\log \frac{ 1 }{ x } = \log 1 - \log x = -\log x
+$$
+
+## Unidad XXIII (interés compuesto y capitalización y amortización)
+
+### Definiciones (interés compuesto y capitalización y amortización)
+
+#### Interés compuesto
+
+Dicho de una suma cuando los intereses ganados se acumulan periódicamente al capital, con lo cual se obtiene un nuevo capital al final de cada periodo de tiempo.
+
+#### Capitalización
+
+Se refiere a la operación de acumular los intereses con el capital.
+
+#### Amortizar
+
+De una suma (una deuda) es redimirla o cancelarla por medio de cierto número de cantidades periódicas, generalmente anuales y por eso se llaman anualidades.
+
+Un capital también se puede formar por medio de sumas periódicas o anualidades.
+
+#### Anualidad
+
+La suma que se impone anualmente durante un número determinado de años, para amortizar una deuda o constituir un capital.
+
+### Formulas generales de capitalización
+
+- $c$: capital inicial.
+
+- $r$: porcentaje de interés anual.
+
+- $t$: tiempo en periodo anual.
+
+- $C$: capital con sus intereses acumulados.
+
+$$
+C = c (1 + r)^t \quad (1)
+$$
+
+Esta es la fórmula fundamental de interés compuesto. De ella podemos deducir:
+
+$$
+c = \frac{ C }{ (1 + r)^t } \\[10 pt]
+
+r = \sqrt[ t ]{ \frac{ C }{ c } } - 1
+$$
+
+Aplicando logaritmos a $(1)$ tenemos:
+
+$$
+t = \frac{ \log C - \log c }{ \log { 1 + r } }
+$$
+
+### Formulas generales de amortización
+
+- $C$: capital original para ser amortizado.
+
+- $r$: porcentaje de interés anual.
+
+- $a$: anualidad (cuota anual de amortización).
+
+- $t$: tiempo en años de amortización.
+
+El capital $C$, inicialmente prestado, se convertirá en los $t$ años al porcentaje de amortización en una suma equivalente a:
+
+$$
+C (1 + r)^t
+$$
+
+Por tanto, la suma capitalizada a partir de la cantidad prestada debe ser igual a la suma de las cuotas capitalizadas por anualidades.
+
+$$
+C (1 + r)^t = a + a (1 + r) + \dots + a (1 + r)^{ t - 1 }
+$$
+
+El segundo miembro de la igualdad anterior es la suma de una progresión geométrica cuya razón es $(1 + r)$.
+
+$$
+C (1 + r)^t = \frac{ a (1 + r)^{ t - 1 } (1 + r) - a }{ (1 + r) - 1 } = \frac{ a ((1 + r)^t - 1) }{ r } \\[10 pt]
+
+a = \frac{ r C (1 + r)^t }{ (1 + r)^t - 1 }
+$$
+
+### Capitalización por cuotas periódicas
+
+Un capital se puede constituir mediante la colocación de un determinado número de cuotas periódicas a interés compuesto. Los periodos son generalmente anuales.
+
+- $C$: capital que se quiere constituir.
+
+- $r$: porcentaje de interés anual.
+
+- $t$: tiempo en años en el que se quiere constituir el capital.
+
+- $a$: anualidad.
+
+$$
+C = a (1 + r) + a (1 + r)^2 + \dots + a (1 + r)^t
+$$
+
+El segundo miembro de la igualdad anterior es la suma de una progresión geométrica cuya razón es $(1 + r)$.
+
+$$
+C = \frac{ a (1 + r)^t (1 + r) - a (1 + r) }{ r } = \frac{ a((1 + r)^{ t + 1 } - (1 + r)) }{ r }  \\[10 pt]
+
+a = \frac{ r C }{ (1 + r)^{ t + 1 } - (1 + r) }
+$$

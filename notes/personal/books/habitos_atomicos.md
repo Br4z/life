@@ -76,7 +76,7 @@
 
 - En una ocasión escuché la historia de un hombre que usaba una silla de ruedas. Cuando le preguntaron si era difícil para él estar confinado a usar la silla, él respondió: "no estoy confinado a usar mi silla de ruedas, gracias a ella soy libre. Si no fuera por la silla de ruedas, estaría condenado a vivir acostado y jamás podría salir de mi casa".
 
-- Ya sea que te estés aproximando a los cambios de conducta como un individuo, un padre de familia, un entrenador o un líder, debemos hacernos la siguiente pregunta: "¿cómo puedo diseñar un mundo en el que sea fácil hacer lo que es correcto?". Rediseña tu vida para que las acciones que importan más sean siempre las más sencillas de realizar.
+- Ya sea que te estés aproximando a los cambios de conducta como un individuo, un padre de familia, un entrenador o un líder, debemos hacernos la siguiente pregunta: "¿Cómo puedo diseñar un mundo en el que sea fácil hacer lo que es correcto?". Rediseña tu vida para que las acciones que importan más sean siempre las más sencillas de realizar.
 
 - Los mecanismos de compromiso son útiles porque permiten tomar ventaja de las buenas intenciones antes de que caigamos víctimas de la tentación.
 
