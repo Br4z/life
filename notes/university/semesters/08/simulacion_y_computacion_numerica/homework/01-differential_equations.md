@@ -152,11 +152,11 @@ $$
 
 ### $\frac{ dy }{ dx } = 2 x e^{ - y }$
 
-    $$
-    \int { \frac{ 1 }{ e^{ -y } } dy } = \int { 2 x dx } \\[10 pt]
+$$
+\int { \frac{ 1 }{ e^{ -y } } dy } = \int { 2 x dx } \\[10 pt]
 
-    e^y = x^2 + C \quad y = \ln { x^2 + C }
-    $$
+e^y = x^2 + C \quad y = \ln { x^2 + C }
+$$
 
 ### $\frac{ dx }{ dt } = \frac{ 1 + t }{ t^2 + x^2 }$
 

@@ -26,7 +26,7 @@ Entre sus características encontramos:
 
 La ciencia de datos combina las matemáticas y la estadística, la programación especializada, el análisis avanzado, la inteligencia artificial y el machine learning con conocimientos específicos en la materia para descubrir conocimientos procesables ocultos en los datos de una organización.
 
-![Data science veen diagram](../../assets/introduccion_a_la_ciencie_de_datos/01_01-data_science_venn_diagram.png)
+![Data science veen diagram](../../assets/introduccion_a_la_ciencia_de_datos/01_01-data_science_venn_diagram.png)
 
 ## Business intelligence
 
@@ -98,4 +98,4 @@ Data warehousing technology and the adoption of data mining techniques assist co
 
 ## Metodología CRIPS-DM
 
-![CRISP-DM diagram](../../assets/introduccion_a_la_ciencie_de_datos/01_02-CRISP-DM_diagram.png)
+![CRISP-DM diagram](../../assets/introduccion_a_la_ciencia_de_datos/01_02-CRISP-DM_diagram.png)

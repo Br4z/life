@@ -131,3 +131,39 @@ Nos permite tener unas herramientas gráficas para representar la solución a un
 Son aquellos lenguajes de programación en donde existe un programa interpretador que no es más que un programa que "coge" nuestro programa y lo convierte línea a línea a Lenguaje de Bajo Nivel y así mismo lo va ejecutando (o sea línea a línea).
 
 ---
+
+Son aquellos lenguajes en donde un programa llamado compilador toma TODO el programa que hemos escrito (que normalmente se denomina Programa Fuente), lo revisa y solo hasta cuando esté completamente bien, solo hasta allí lo convierte a su equivalente en Lenguaje de Bajo Nivel para ser ejecutado por el computador...
+
+> La revision se hace respecto a la gramatica del lenguaje de programacion.
+
+### Errores en un programa
+
+#### Errores humanos
+
+##### Errores de concepción
+
+Este es el tipo de error que se presenta cuando el programador cree que tiene el objetivo claramente identificado y entendido y resulta que no es así (pero él no lo sabe) con lo cual es evidente que finalizado el programa seguramente habrá logrado algo totalmente diferente a lo que inicialmente necesitaba lograr...
+
+##### Errores lógicos
+
+Son los errores que se presentan cuando no se ha comprobado apropiadamente a través de la "prueba de escritorio" la efectividad de un algoritmo...
+
+##### Errores de procedimiento
+
+Son los errores que se presentan cuando se tiene claro el objetivo y se ha desarrollado un algoritmo aproximadamente bien, pero no se realiza bien la "prueba de Escritorio", es decir, se hace la prueba de Escritorio, pero se hace mal y no nos damos cuenta y además de ello quedamos convencidos que el algoritmo quedó bien...
+
+## Capitulo 8 (ciclos)
+
+Un ciclo puede definirse como una estructura que nos permite repetir o iterar un conjunto de instrucciones y que tiene las siguientes características:
+
+1. El conjunto de instrucciones debe ser finito.
+
+2. La cantidad de veces que se repita dicho conjunto de instrucciones también debe ser finita.
+
+    - Una condición es explícita cuando depende solamente de la misma ejecución del programa.
+
+    - Una condición es implícita cuando depende de la interacción con el usuario.
+
+3. Deben estar claramente demarcados el inicio y el fin del ciclo. En los casos en los cuales solo exista una instrucción a iterar, no serán necesarias dichas marcas.
+
+4. Dentro de un ciclo podrá ir cualquiera de las otras estructuras que se han estudiado, incluyendo otros ciclos.

@@ -2,7 +2,7 @@
 
 ## Programas
 
-- [VisiPics](http://www.visipics.info/index.php?title=Download): Para eliminar imágenes duplicadas (o parecidas).
+- [VisiPics](http://www.visipics.info/index.php?title=Download): Para eliminar imagenes duplicadas (o parecidas).
 
 - [Windows Update Blocker](https://www.sordum.org/9470/windows-update-blocker-v1-7/)
 

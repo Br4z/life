@@ -1,3 +1,7 @@
+---
+reviewed_on: "2024-12-12"
+---
+
 # Jacobi's method
 
 $$

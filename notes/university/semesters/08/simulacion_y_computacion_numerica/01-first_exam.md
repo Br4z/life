@@ -2,7 +2,7 @@
 reviewed_on: "2024-10-04"
 ---
 
-# Midterm
+# First exam
 
 ## 1
 

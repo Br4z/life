@@ -68,8 +68,8 @@ P_n(x_i) = y_i
 $$
 
 $$
-P_n(x_j) = \sum_{ i = 0 }^n { y_i \mathcal{L}_i(x_j) } \\[10 pt]
-\mathcal{L}_i(x_j) = \delta_{ ij }
+P_n(x_j) = \sum_{ i = 0 }^n { y_i L_i(x_j) } \\[10 pt]
+L_i(x_j) = \delta_{ ij }
     \begin{cases}
         1 & j =i \\
         0 & j \neq i
@@ -80,5 +80,5 @@ Esto garantiza que $P_n(x_i) = y_i$ para cada $i$.
 
 $$
 P_n(x)= \sum_{ i = 0 }^n { y_i \prod_{ \underset{ j \neq i }{ j = 0 } }^n \frac{ x - x_j }{ x_i - x_j } } \\[10 pt]
-P_n(x) = \sum_{ i = 0 }^n { y_i \mathcal{L}_i(x) }
+P_n(x) = \sum_{ i = 0 }^n { y_i L_i(x) }
 $$

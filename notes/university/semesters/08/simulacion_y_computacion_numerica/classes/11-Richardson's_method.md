@@ -1,2 +1,0 @@
-
-# Richardson's method

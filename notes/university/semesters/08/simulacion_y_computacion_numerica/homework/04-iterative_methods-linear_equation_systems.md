@@ -17,9 +17,9 @@ The following system of equations is designed to determine concentrations (the $
 
 $$
 \begin{array}{cccc}
-    15 c_1 & - 3 c_2  & - c_3   & = 3,800 \\
-    & -3c_1  & + 18 c_2 & - 6c_3  & = 1,200 \\
-    & -4c_1  & - c_2    & + 12c_3 & = 2,350
+    15 c_1  & - 3 c_2  & - c_3    & = 3,800 \\
+    -3 c_1  & + 18 c_2 & - 6 c_3  & = 1,200 \\
+    -4 c_1  & - c_2    & + 12 c_3 & = 2,350
 \end{array}
 $$
 
