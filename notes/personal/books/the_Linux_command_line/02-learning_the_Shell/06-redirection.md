@@ -1,5 +1,5 @@
 ---
-reviewed_on: "2024-12-24"
+reviewed_on: "2024-12-25"
 ---
 
 # Redirection
@@ -12,13 +12,13 @@ reviewed_on: "2024-12-24"
 
 - `grep`: print lines matching a pattern.
 
-- `wc`: print newline, word, and byte counts for each files.
+- `wc`: print newline, word, and byte counts for each file.
 
 - `head`: output the first part of a file.
 
 - `tail`: output the last part of a file.
 
-- `tee`: read from standard input and write to standard - output files.
+- `tee`: read from standard input and write to standard output and files.
 
 ## Standard input, output, and error
 
@@ -34,8 +34,7 @@ I/O redirection allows us to redefine where standard output goes. To redirect st
 ls -l /usr/bin > ls-output.txt
 ```
 
-With the command above we created a long listing of the `/usr/bin` directory and sent the
-results to the file `ls-output.txt`. Let's set what happened if we wire an wrong directory:
+With the command above, we created a long listing of the `/usr/bin` directory and sent the results to the file `ls-output.txt`. Let's set what happens if we wire a wrong directory:
 
 ```BASH
 ls -l /bin/usr > ls-output.txt
@@ -55,7 +54,7 @@ If we want to append redirected output to a file instead of overwriting the file
 
 ## Redirecting standard error
 
-Redirecting standard error lacks the ease of a dedicated redirection operator. To redirect standard error we must refer to its **file descriptor**. A program can produce output on any of several numbered file streams...
+Redirecting standard error lacks the ease of a dedicated redirection operator. To redirect to standard error, we must refer to its **file descriptor**. A program can produce output on any of several numbered file streams...
 
 - `0`: standard input.
 
@@ -78,7 +77,7 @@ ls -l /bin/usr 2> ls-error.txt
 
 > The order of the redirections is significant.
 
-Recent versions of bash provide a second, more streamlined method for performing this combined redirection, shown here:
+Recent versions of `bash` provide a second, more streamlined method for performing this combined redirection, shown here:
 
 ```BASH
 # <command> &> <file name>
@@ -87,7 +86,7 @@ Recent versions of bash provide a second, more streamlined method for performing
 
 ### Disposing of unwanted output
 
-...The system provides a way to do this by redirecting output to a special file called `/dev/null`. This file is a system device often referred to as a **bit bucket**, which accepts input and does nothing with it. To suppress error messages from a command, we do this:
+...The system provides a way to do this by redirecting output to a special file called `/dev/null`. This file is a system, often referred to as a **bit bucket**, which accepts input and does nothing with it. To suppress error messages from a command, we do this:
 
 ```BASH
 # <command> 2> /dev/null
@@ -97,29 +96,27 @@ Recent versions of bash provide a second, more streamlined method for performing
 
 ### `cat`
 
+`cat` reads one or more files and copies them to standard output.
+
 ```BASH
-cat <file path>
-
-cat ls-output.txt
+# cat [file...]
 ```
-
-Reads one or more files and copies them to standard output.
 
 ---
 
 Because `cat` can accept more than one file as an argument, it can also be used to join files together.
 
 ```BASH
-movie.mpeg.001 movie.mpeg.002 ... movie.mpeg.099
+# movie.mpeg.001 movie.mpeg.002 ... movie.mpeg.099
 
 cat movie.mpeg.0* > movie.mpeg
 ```
 
-> Because wildcards always expand in sorted order, the arguments will bearranged in the correct order.
+> Because wildcards always expand in sorted order, the arguments will be arranged in the correct order.
 
 ---
 
-If we enter cat with no arguments, it reads from standard input, and since standard input is, by default, attached to the keyboard, it's waiting for us to type something. If we typed something and press `CTRL + d` to tell cat that it has reached end of file (EOF) on standard input.
+If `cat` is not given any arguments, it reads from standard input, and since standard input is, by default, attached to the keyboard, it is waiting for us to type something. If we type something and press `CTRL + d` to tell `cat` that it has reached end of file (EOF) on standard input, it finishes its execution.
 
 > We can use this behavior to create short text files.
 
@@ -130,26 +127,30 @@ Let's try redirecting standard input.
 ```BASH
 cat < lazy_dog.txt
 
-The quick brown fox jumped over the lazy dog.
+# The quick brown fox jumped over the lazy dog.
 ```
 
 ## Pipelines
 
+The capability of commands to read data from standard input and send to standard output is utilized by a shell feature called **pipelines**. Using the **pipe** operator `|`, the standard output of one command can be piped into the standard input of another.
+
 ```BASH
-<command> | <command>
+# <command> | <command>
 
 ls -l /usr/bin | less
 ```
 
-The capability of commands to read data from standard input and send to standard output is utilized by a shell feature called **pipelines**. Using the **pipe** operator `|`, the standard output of one command can be piped into the standard input of another.
+### The difference between `>` and `|`
+
+...the redirection operator connects a command with a file, while the pipeline operator connects the output of one command with the input of a second command.
 
 ### Filters
 
 ```BASH
-<command> | <filters> | <command>
+# <command> | <filters> | <command>
 ```
 
-Filters take input, change it somehow, and then output it.
+...Filters take input, change it somehow, and then output it...
 
 ---
 
@@ -159,23 +160,23 @@ ls /bin /usr/bin | sort | less
 
 The command above is to make a combined list of all the executable programs in `/bin` and `/usr/bin`, put them in sorted order, and view the resulting list.
 
-> The diffence between `>` and `|`
->
-> Redirection operator silently creates or overwrites files, so you need to treat it with a lot of respect.
-
 #### `uniq`
 
-Removes duplicate items from the list and is often used in conjunction with `sort` filter.
+...It accepts a **sorted** list of data from either standard input or a single filename argument and, by default, removes any duplicates from the list...
+
+> It is important that the list is sorted because it only filter **adjacent** matching lines.
 
 ```BASH
 ls /bin /usr/bin | sort | uniq | less    # See the uniques elements
 
-# ---------------------------------- # ---------------------------------- #
+# ----------------------------------------------------------------------- #
 
 ls /bin /usr/bin | sort | uniq -d | less # See the duplicates elements
 ```
 
 #### `wc`
+
+It is used to display the number of lines, words, and bytes contained in files.
 
 ```BASH
 wc ls-output.txt
@@ -183,9 +184,7 @@ wc ls-output.txt
 7902 64566 503634 ls-output.txt
 ```
 
-It prints: lines, words and bytes counting respectively. If we executed it without command line arguments, `wc` accepts standard input.
-
-> The `-l` option limits its output to report only lines. Adding it to a pipeline is a handy way to count things.
+In this case, it prints out three numbers: lines, words, and bytes contained in `ls-out put.txt`...The `-l` option limits its output to report only lines. Adding it to a pipeline is a handy way to count things...
 
 ```BASH
 ls /bin /usr/bin | sort | uniq | wc -l # See the number of items we have in our sorted list
@@ -197,92 +196,39 @@ ls /bin /usr/bin | sort | uniq | wc -l # See the number of items we have in our 
 grep <pattern> <filename>
 ```
 
-When `grep` encounters a "pattern" in the file, it prints out the lines containing it.
-
-> The patterns that it can match can be very complex (with regular expressions).
+When `grep` encounters a "pattern" in the file, it prints out the lines containing it...
 
 ```BASH
 ls /bin /usr/bin | sort | uniq | grep zip # Find all the files in our list of programs that had the word "zip" embedded in the name
 
-bunzip2
-bzip2
-gunzip
-gzip
-unzip
-zip
-zipcloak
-zipgrep
-zipinfo
-zipnote
-zipsplit
+# bunzip2
+# bzip2
+# gunzip
+# gzip
+# unzip
+# zip
+# zipcloak
+# zipgrep
+# zipinfo
+# zipnote
+# zipsplit
 ```
 
 There are a couple of handy options for `grep`:
 
 - `-i`: perform the search in a no case sensitive way.
-- `-v`: print only those lines that don't match the pattern.
+
+- `-v`: print only those lines that do not match the pattern.
 
 #### `head` and `tail`
 
-The `head` command prints the first 10 lines of a file, and the `tail` command prints the last 10 lines.
+The `head` command prints the first $10$ lines of a file, and the `tail` command prints the last $10$ lines.
 
 > The number of lines can be adjusted with the `-n` option.
 
-```BASH
-head -n 5 ls-output.txt
+`tail` has an option that allows you to view the file in real time (`-f`). This is incredibly useful when you are monitoring log files.
 
-total 343496
--rwxr-xr-x 1 root root 31316 2017-12-05 08:58 [
--rwxr-xr-x 1 root root 8240 2017-12-09 13:39 411toppm
--rwxr-xr-x 1 root root 111276 2017-11-26 14:27 a2p
--rwxr-xr-x 1 root root 25368 2016-10-06 20:16 a52dec
-
-# ---------------------------------- # ---------------------------------- #
-
-tail -n 5 ls-output.txt
-
--rwxr-xr-x 1 root root 5234 2017-06-27 10:56 znew
--rwxr-xr-x 1 root root 691 2015-09-10 04:21 zonetab2pot.py
--rw-r--r-- 1 root root 930 2017-11-01 12:23 zonetab2pot.pyc
--rw-r--r-- 1 root root 930 2017-11-01 12:23 zonetab2pot.pyo
-lrwxrwxrwx 1 root root 6 2016-01-31 05:22 zsoelim -> soelim
-```
-
-These can be used in pipelines as well:
-
-```BASH
-ls /usr/bin | tail -n 5
-
-znew
-zonetab2pot.py
-zonetab2pot.pyc
-zonetab2pot.pyo
-zsoelim
-```
-
-`tail` has an option that allows you to view the file in real time (`-f`).
-
-> That is incredible useful when you're monitoring log files.
-
-```BASH
-tail -f /var/log/messages # Superuser privileges are required to perform this command
-
-Feb 8 13:40:05 twin4 dhclient: DHCPACK from 192.168.1.1
-Feb 8 13:40:05 twin4 dhclient: bound to 192.168.1.4 -- renewal in 1652 seconds.
-Feb 8 13:55:32 twin4 mountd[3953]: /var/NFSv4/musicbox exported to both 192.168.1.0/24 and
-twin7.localdomain in 192.168.1.0/24,twin7.localdomain
-Feb 8 14:07:37 twin4 dhclient: DHCPREQUEST on eth0 to 192.168.1.1 port 67
-Feb 8 14:07:37 twin4 dhclient: DHCPACK from 192.168.1.1
-Feb 8 14:07:37 twin4 dhclient: bound to 192.168.1.4 -- renewal in 1771 seconds.
-Feb 8 14:09:56 twin4 smartd[3468]: Device: /dev/hda, SMART Prefailure Attribute: 8 Seek_Time_
-Performance changed from 237 to 236
-Feb 8 14:10:37 twin4 mountd[3953]: /var/NFSv4/musicbox exported to both 192.168.1.0/24 and
-twin7.localdomain in 192.168.1.0/24,twin7.localdomain
-Feb 8 14:25:07 twin4 sshd(pam_unix)[29234]: session opened for user me by (uid=0)
-Feb 8 14:25:36 twin4 su(pam_unix)[29279]: session opened for user root by me(uid=500)
-```
-
-> The promp won't be available until you press `CTRL + c`.
+> The prompt will not be available until you press `CTRL + c`.
 
 ### `tea`
 
@@ -291,15 +237,15 @@ The `tea` program reads standard input and copies it to both standard output (al
 ```BASH
 ls /usr/bin | tee ls.txt | grep zip
 
-bunzip2
-bzip2
-gunzip
-gzip
-unzip
-zip
-zipcloak
-zipgrep
-zipinfo
-zipnote
-zipsplit
+# bunzip2
+# bzip2
+# gunzip
+# gzip
+# unzip
+# zip
+# zipcloak
+# zipgrep
+# zipinfo
+# zipnote
+# zipsplit
 ```

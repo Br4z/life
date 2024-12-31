@@ -1,5 +1,5 @@
 ---
-reviewed_on: "2024-09-14"
+reviewed_on: "2024-12-27"
 ---
 
 # La esencia lógica de la programación
@@ -122,7 +122,7 @@ Nos permite tener unas herramientas gráficas para representar la solución a un
 | diagramas de flujo                    |                 1. Permite visualizar gráficamente el camino que sigue la solución a un problema. <br> 2. Por ser tan simplificado es muy entendible. <br> 3. No se necesitan muchos conocimientos técnicos para utilizar esta técnica.                  | 1. Dado que los flujos (representados con flechas) pueden ir de cualquier lugar a cualquier lugar, el diagrama puede llegar a ser casi inentendible. <br> 2. Deben conocerse bien los símbolos que se van a utilizar. <br> 3. No todos los símbolos están estandarizados. <br> 4. Los ciclos deben ser reinterpretados para poder ser diagramados en esta técnica. |
 | diagramas rectangulares estructurados | 1. Permite tener un marco referencial concreto y definido para la representación de los algoritmos. <br> 2. Solo tiene tres esquemas que le permiten representar las tres estructuras básicas. <br> 3. Exige orden en la representación de un algoritmo. |                                                                                                                                                               1. No es una técnica muy popularizada.                                                                                                                                                               |
 
-## Capitulo 5 (la tecnología)
+## Capítulo 5 (la tecnología)
 
 ### Lenguajes de alto nivel
 
@@ -134,7 +134,7 @@ Son aquellos lenguajes de programación en donde existe un programa interpretado
 
 Son aquellos lenguajes en donde un programa llamado compilador toma TODO el programa que hemos escrito (que normalmente se denomina Programa Fuente), lo revisa y solo hasta cuando esté completamente bien, solo hasta allí lo convierte a su equivalente en Lenguaje de Bajo Nivel para ser ejecutado por el computador...
 
-> La revision se hace respecto a la gramatica del lenguaje de programacion.
+> La revisión se hace respecto a la gramática del lenguaje de programación.
 
 ### Errores en un programa
 
@@ -152,7 +152,7 @@ Son los errores que se presentan cuando no se ha comprobado apropiadamente a tra
 
 Son los errores que se presentan cuando se tiene claro el objetivo y se ha desarrollado un algoritmo aproximadamente bien, pero no se realiza bien la "prueba de Escritorio", es decir, se hace la prueba de Escritorio, pero se hace mal y no nos damos cuenta y además de ello quedamos convencidos que el algoritmo quedó bien...
 
-## Capitulo 8 (ciclos)
+## Capítulo 8 (ciclos)
 
 Un ciclo puede definirse como una estructura que nos permite repetir o iterar un conjunto de instrucciones y que tiene las siguientes características:
 
@@ -167,3 +167,49 @@ Un ciclo puede definirse como una estructura que nos permite repetir o iterar un
 3. Deben estar claramente demarcados el inicio y el fin del ciclo. En los casos en los cuales solo exista una instrucción a iterar, no serán necesarias dichas marcas.
 
 4. Dentro de un ciclo podrá ir cualquiera de las otras estructuras que se han estudiado, incluyendo otros ciclos.
+
+## Capítulo 9 (arreglos)
+
+### Concepto general
+
+Es un conjunto de variables en donde cada una de ellas puede ser referenciada utilizando su posición relativa, es decir, su ubicación en relación con el primer elemento de dicho conjunto.
+
+### Vectores
+
+Es un arreglo en donde la ubicación **exacta** de cada uno de sus elementos necesita solamente la utilización de un subíndice.
+
+## Capítulo 11 (funciones)
+
+Una función es un conjunto de órdenes que:
+
+1. Permite lograr un objetivo.
+
+2. Tiene un nombre único identificativo.
+
+3. Puede necesitar parámetros para lograr dicho objetivo.
+
+4. Nos debe retornar un resultado que deberá concordar con el objetivo propuesto.
+
+5. Puede ser manejado como una sola unidad.
+
+## Problemas reales de la programación
+
+1. Necesidad de simplificar la idea general para lograr un objetivo.
+
+2. Simplificación de la prueba de escritorio y, por lo tanto, detección muy sencilla de errores.
+
+3. Reutilización del código fuente.
+
+## Macro algoritmo
+
+Es un algoritmo dividido en unidades funcionales en donde cada una de ellas logra un pequeño objetivo dentro de toda la solución y en conjunto dichas unidades logran el objetivo general.
+
+## Capítulo 12 (consejos y reflexiones sobre programación)
+
+### Acerca de la metodología para solucionar un problema
+
+No dé ni un solo paso hasta tanto no tenga una absoluta certeza de lo que usted quiere lograr. No avance porque es posible que llegue a avanzar por el camino equivocado y termine logrando algo muy distinto a lo que había sido su objetivo original. Primero que nada, un objetivo claro y ahí sí podrá usted pensar en todos los demás elementos que conforman esta metodología.
+
+### Acerca de las técnicas de representación de algoritmos
+
+...Las técnicas lo que van a permitir, cada una en su estilo, es colocar a su disposición herramientas para que la representación se haga mucho más sencilla, porque si usted  se detiene a pensar un momento, no es tan fácil representar una idea por su misma naturaleza etérea e intangible. Por este motivo, la explicación de estas técnicas busca que usted pueda tener unos elementos conceptuales que le permitan de una manera sencilla y simplificada representar sus ideas.

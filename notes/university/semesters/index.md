@@ -78,6 +78,6 @@
     |  code   |                       subject                        | credits | grade |
     |:-------:|:----------------------------------------------------:|:-------:|:-----:|
     | 730078C |                 Impactos ambientales                 |    3    |  4.0  |
-    | 750016C |          Simulación y computación numérica           |    3    |       |
-    | 750025C |        Introducción a la ciencia de los datos        |    3    |       |
+    | 750016C |          Simulación y computación numérica           |    3    |  4.1  |
+    | 750025C |        Introducción a la ciencia de los datos        |    3    |  4.2  |
     | 750026C | Desarrollo de aplicaciones para dispositivos móviles |    3    |  4.9  |

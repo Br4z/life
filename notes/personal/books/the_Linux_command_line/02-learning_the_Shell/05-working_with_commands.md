@@ -45,19 +45,19 @@ Shell builtin that displays the kind of command the shell will execute, given a 
 ```BASH
 # type <command>
 
-# ---------------------------------- # ---------------------------------- #
+# ----------------------------------------------------------------------- #
 
 type type
 
 # type is a shell builtin
 
-# ---------------------------------- # ---------------------------------- #
+# ----------------------------------------------------------------------- #
 
 type ls
 
 # ls is aliased to `ls --color=tty'
 
-# ---------------------------------- # ---------------------------------- #
+# ----------------------------------------------------------------------- #
 
 type cp
 
@@ -83,7 +83,7 @@ which ls
 ```BASH
 # help <command>
 
-# ---------------------------------- # ---------------------------------- #
+# ----------------------------------------------------------------------- #
 
 help cd
 
@@ -99,7 +99,7 @@ Many executable programs support a `--help` option that displays a description o
 ```BASH
 # <command> --help
 
-# ---------------------------------- # ---------------------------------- #
+# ----------------------------------------------------------------------- #
 
 mkdir --help
 
@@ -149,7 +149,7 @@ It is also possible to search the list of man pages for possible matches based o
 ```BASH
 # apropos <term>
 
-# ---------------------------------- # ---------------------------------- #
+# ----------------------------------------------------------------------- #
 
 apropos partition
 
@@ -167,7 +167,7 @@ Displays the name and a one-line description of a man page matching a specified 
 
 #### The most brutal man page of them all
 
-As we have seen, the manual pages supplied with Linux and other Unix-like systems are intended as reference documentation and not as tutorials. Many man pages are hard to read, but I think the grand prize for difficulty has got to go to the man page for bash. As I was doing research for this book, I gave the bash man page careful review to ensure that I was covering most of its topics. When printed, it is more than $80$ pages long and extremely dense, and its structure makes absolutely no sense to a new user.
+As we have seen, the manual pages supplied with Linux and other Unix-like systems are intended as reference documentation and not as tutorials. Many man pages are hard to read, but I think the grand prize for difficulty has got to go to the man page for `bash`. As I was doing research for this book, I gave the `bash` man page careful review to ensure that I was covering most of its topics. When printed, it is more than $80$ pages long and extremely dense, and its structure makes absolutely no sense to a new user.
 
 On the other hand, it is very accurate and concise, as well as being extremely complete...
 
@@ -217,7 +217,7 @@ cd /usr; ls; cd -
 
     # test is a shell builtin
 
-    # ---------------------------------- # ---------------------------------- #
+    # ----------------------------------------------------------------------- #
 
     type foo
 
@@ -229,11 +229,11 @@ cd /usr; ls; cd -
     ```BASH
     # alias <name>='<string>'
 
-    # ---------------------------------- # ---------------------------------- #
+    # ----------------------------------------------------------------------- #
 
     alias foo='cd /usr; ls; cd -'
 
-    # ---------------------------------- # ---------------------------------- #
+    # ----------------------------------------------------------------------- #
 
     type foo
 
@@ -245,7 +245,7 @@ cd /usr; ls; cd -
     ```BASH
     unalias foo
 
-    # ---------------------------------- # ---------------------------------- #
+    # ----------------------------------------------------------------------- #
 
     type foo
 

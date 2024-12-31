@@ -26,6 +26,12 @@
 
 - Language: Spanish.
 
+## [El señor de las moscas](./el_señor_de_las_moscas.md)
+
+- Author:  William Golding.
+
+- Language: Spanish.
+
 ## [Hábitos atómicos](./habitos_atomicos.md)
 
 - Author: James Clear.
